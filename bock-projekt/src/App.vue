@@ -32,6 +32,8 @@ export default {
     }
   #app{
     width: 100vw;
+    height: 100vh;
+    background-color: var(--primary-color);
   }
   
   .v-enter-active{

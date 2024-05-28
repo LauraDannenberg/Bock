@@ -30,13 +30,22 @@
       width: 100vw;
       display: flex;
       align-content: center;
+      align-self: center;
+      justify-content: center;
+      display: flex;
     }
 
     .logo{
       height: auto;
-      width: 40%;
-      left:30%;
-      position: fixed;
+      width:auto;
+      
+      position: relative;
+      justify-content: center;;
+      
+      aspect-ratio: 1/1;
+      max-width: 90%;
+      max-height: 90%;
+      
       
     }
 

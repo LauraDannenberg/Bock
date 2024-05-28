@@ -1,9 +1,11 @@
 <template>
     <div class="Registration">
-        <img src="../assets/logo3.png" class="logo" alt="Logo">
+        
         
         <div id="oben">
-            <h3>BOCK</h3>
+            <img src="../assets/logo3.png" class="logo" alt="Logo" style="justify-self: left;">
+            <h3 style="justify-self: center;">BOCK</h3>
+            <img src="../assets/logo3.png" class="logo" alt="Logo" style="visibility: hidden;">
         </div>
         <div id="line"></div>
 
@@ -67,21 +69,15 @@ form {
     cursor: pointer;
 }
 
-.logo{
-    position: absolute;
-    top: 2vh; /* Anpassen der vertikalen Position nach Bedarf */
-    left: 2vh; /* Anpassen der horizontalen Position nach Bedarf */
-    max-width:20vh;
-    height: auto;
-}
 
 #oben{
     display: flex;
     height:20vh;
-
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: #e0f7e9;
+    font-family: cursive;
+    font-size: 8vh;
 }
 #unten{
     display: flex;
