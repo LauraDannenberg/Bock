@@ -25,7 +25,7 @@
         <div id="unten">
             <img class="navi" src="../assets/Männchen.png"> 
             <img class="navi" src="../assets/Boards.png">
-            <img calss="navi" src="../assets/Lupe.png">
+            <img class="navi" src="../assets/Lupe.png">
             <img class="navi" src="../assets/Chat.png">
         </div>
     </div>    
