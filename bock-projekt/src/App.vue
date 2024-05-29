@@ -4,18 +4,21 @@
       <Startseite/>
     </Transition>
     <RegistrationForm/>
+    <BrettDefault/>
   </div>
 </template>
 
 <script>
 import RegistrationForm from './components/RegistrationsSeite.vue';
 import Startseite from './components/LandingPage.vue';
+import BrettDefault from './components/SchwarzeBretter.vue';
 
 export default {
   name: 'App',
   components: {
     Startseite,
-    RegistrationForm
+    RegistrationForm,
+    BrettDefault
   }
 };
 
@@ -24,8 +27,8 @@ export default {
 <style>
   :root{
       --primary-color: #00c853!important;
-      --secondary-color: #d786d8!important;
-      --tertiary-color: #9a46b4!important;
+      --secondary-color: #b370b3!important;
+      --tertiary-color: #e0f7e9!important;
       --success-color: #5943a8!important;
       --warning-color: #eaca44!important;
       --error-color: #ef4d4d!important;
