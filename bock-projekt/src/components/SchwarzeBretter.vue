@@ -1,13 +1,7 @@
 <template>
     <div class="Boards">
-        <div id="oben">
-            <img src="../assets/logo3.png" class="logo" alt="Logo" style="justify-self: left;">
-            <h3 style="justify-self: center;">Boards</h3>
-            <img src="../assets/logo3.png" class="logo" alt="Logo" style="visibility: hidden;">
-        </div>
-        <div id="line">
-
-        </div>
+        <Header title="Boards"/>
+        <Linie />
         <div id="mitte">
             <h3 style="justify-self: center;">Hobby | Fachbereich</h3>
 
@@ -22,16 +16,23 @@
             </div>
 
         </div>
-        <div id="unten">
-            <img class="navi" src="../assets/Männchen.png"> 
-            <img class="navi" src="../assets/Boards.png">
-            <img class="navi" src="../assets/Lupe.png">
-            <img class="navi" src="../assets/Chat.png">
-        </div>
+        <NavBar />
     </div>    
 </template>
 
 <script>
+import Header from './HeaderComponent.vue';
+import NavBar from '../components/NavBar.vue';
+import Linie from './LineComponent.vue';
+
+export default {
+  name: 'ChatSeite',
+  components: {
+    Header,
+    NavBar,
+    Linie
+  },
+};
 </script>
 
 <style>
@@ -72,4 +73,14 @@
     .board-group{
         justify-self: center;
     }
+    nav {
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 10px 0;
+    box-shadow: 0 -2px 10px #ccc;
+  }
 </style>

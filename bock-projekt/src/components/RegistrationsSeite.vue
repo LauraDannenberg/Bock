@@ -1,13 +1,8 @@
 <template>
     <div class="Registration">
-        
-        
-        <div id="oben">
-            <img src="../assets/logo3.png" class="logo" alt="Logo" style="justify-self: left;">
-            <h3 style="justify-self: center;">BOCK</h3>
-            <img src="../assets/logo3.png" class="logo" alt="Logo" style="visibility: hidden;">
-        </div>
-        <div id="line"></div>
+
+        <Header title="LogIn"/>
+        <Linie />
 
         <div id="unten">
             <form @submit.prevent="register">
@@ -27,7 +22,9 @@
                     <label for="email">Email</label>
                     <input type="email" id="email" v-model="email" placeholder="Email eingeben" required />
                 </div>
-                <button type="submit" class="register-button">Registrieren</button>
+                <button type="submit" class="register-button">
+                    <router-link to="/Boards">Registrieren</router-link>
+                </button>
             </form>
         </div>
         
@@ -38,6 +35,16 @@
 </template>
 
 <script>
+import Header from './HeaderComponent.vue';
+import Linie from './LineComponent.vue';
+
+export default {
+  name: 'ChatSeite',
+  components: {
+    Header,
+    Linie
+  }
+};
 </script>
 
 <style scoped>
@@ -69,16 +76,6 @@ form {
     cursor: pointer;
 }
 
-
-#oben{
-    display: flex;
-    height:20vh;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #e0f7e9;
-    font-family: cursive;
-    font-size: 8vh;
-}
 #unten{
     display: flex;
     justify-content: center;
@@ -87,10 +84,7 @@ form {
     top: 20vh;
     background-color: #00c853;
 }
-#line{
-    height:1vh;
-    background-color: #0f5c2f;
-}
+
 label {
     display: block;
     margin-bottom: 5px;

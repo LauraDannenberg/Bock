@@ -1,53 +1,38 @@
 <template>
   <div id="app">
-    <Transition on-leave>
-      <Startseite/>
-    </Transition>
-    <RegistrationForm/>
-    <BrettDefault/>
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <component :is="Component"></component>
+      </transition>
+    </router-view>
   </div>
 </template>
 
 <script>
-import RegistrationForm from './components/RegistrationsSeite.vue';
-import Startseite from './components/LandingPage.vue';
-import BrettDefault from './components/SchwarzeBretter.vue';
-
 export default {
-  name: 'App',
-  components: {
-    Startseite,
-    RegistrationForm,
-    BrettDefault
-  }
+  name: 'App'
 };
-
 </script>
 
 <style>
-  :root{
-      --primary-color: #00c853!important;
-      --secondary-color: #b370b3!important;
-      --tertiary-color: #e0f7e9!important;
-      --success-color: #5943a8!important;
-      --warning-color: #eaca44!important;
-      --error-color: #ef4d4d!important;
-    }
-  #app{
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--primary-color);
-  }
-  
-  .v-enter-active{
-    animation: bounce-in 0.5s; /* Custom Animation als Test*/
-  }
-  .v-leave-active{
-    animation: bounce-in 0.5s reverse;
-  }
-  @keyframes bounce-in{
-    0% {transform: scale(0);}
-    50% {transform: scale(1.25);}
-    100%{transform: scale(1);}
-  }
+:root {
+  --primary-color: #00c853 !important;
+  --secondary-color: #b370b3 !important;
+  --tertiary-color: #e0f7e9 !important;
+  --success-color: #5943a8 !important;
+  --warning-color: #eaca44 !important;
+  --error-color: #ef4d4d !important;
+}
+#app {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--primary-color);
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 </style>
