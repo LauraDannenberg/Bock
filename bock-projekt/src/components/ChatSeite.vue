@@ -1,8 +1,7 @@
 <!-- src/views/ChatSeite.vue -->
 <template>
   <div>
-    <Header title="Chats"/>
-    <Linie />
+
     <div class="chat-list">
       <div v-for="chat in chats" :key="chat.id" class="chat-item">
         <div class="avatar"></div>
@@ -12,22 +11,14 @@
         </div>
       </div>
     </div>
-    <NavBar />
   </div>
 </template>
 
 <script>
-import Header from './HeaderComponent.vue';
-import NavBar from '../components/NavBar.vue';
-import Linie from './LineComponent.vue';
+
 
 export default {
   name: 'ChatSeite',
-  components: {
-    Header,
-    NavBar,
-    Linie
-  },
   data() {
     return {
       chats: [
@@ -44,7 +35,6 @@ export default {
 <style scoped>
 .chat-list {
   padding: 20px;
-  background-color: #4CAF50;
   height: calc(100vh - 140px);
   overflow-y: auto;
 }

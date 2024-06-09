@@ -10,17 +10,11 @@
 </template>
 
 <script>
-import Header from './HeaderComponent.vue';
-import NavBar from '../components/NavBar.vue';
-import Linie from './LineComponent.vue';
+
 
 export default {
   name: 'ChatSeite',
-  components: {
-    Header,
-    NavBar,
-    Linie
-  },
+
 };
 </script>
 

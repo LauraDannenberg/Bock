@@ -1,7 +1,5 @@
 <template>
     <div class="Boards">
-        <Header title="Boards"/>
-        <Linie />
         <div id="mitte">
             <h3 style="justify-self: center;">Hobby | Fachbereich</h3>
 
@@ -16,22 +14,14 @@
             </div>
 
         </div>
-        <NavBar />
     </div>    
 </template>
 
 <script>
-import Header from './HeaderComponent.vue';
-import NavBar from '../components/NavBar.vue';
-import Linie from './LineComponent.vue';
+
 
 export default {
-  name: 'ChatSeite',
-  components: {
-    Header,
-    NavBar,
-    Linie
-  },
+  name: 'ChatSeite'
 };
 </script>
 
@@ -51,7 +41,7 @@ export default {
         font-family: sans-serif;
         height:70vh;
         top: 20vh;
-        background-color: var(--primary-color);
+        
         margin: 0%;
     }
     #unten{
