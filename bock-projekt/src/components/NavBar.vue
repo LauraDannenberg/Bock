@@ -21,6 +21,8 @@ nav {
     background-color: #fff;
     padding: 10px 0;
     box-shadow: 0 -2px 10px #ccc;
+
+    height: 8vh;
 }
 </style>
   

@@ -7,7 +7,7 @@ import RegistrationsSeite from './components/RegistrationsSeite.vue'; // Korrigi
 import ProfilSeite from './components/ProfilSeite.vue';
 import SuchSeite from './components/SuchSeite.vue';
 import ProfilErstellenSeite from './components/ProfilErstellenSeite.vue'
-
+import ProfilBearbeitenSeite from './components/ProfilBearbeitenSeite.vue'
 
 const routes = [
     {
@@ -39,6 +39,11 @@ const routes = [
         path: '/ProfileErstellen',
         name: 'ProfileErstellen',
         component: ProfilErstellenSeite
+    },
+    {
+        path: '/ProfilBearbeitenSeite',
+        name: 'ProfilBearbeitenSeite',
+        component: ProfilBearbeitenSeite
     },
     {
         path: '/Search',

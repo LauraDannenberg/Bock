@@ -1,11 +1,10 @@
 <template>
     <div class="Profilerstellen">
-        <Header title="Profil erstellen"/>
+        <Header title="Profil bearbeiten"/>
         <Linie />
         <div id="content">
-            
-          <TextFeld />
-          <TextFeld2Test />
+          <TextFeld :name="name" :alter="alter" :fb="fachbereich" :hobby="hobby"/>
+          <TextFeld2Test /> 
           <SpeicherButton />
             
         </div>
@@ -24,7 +23,7 @@ import TextFeld2Test from './Textfeld2Test.vue';
 import SpeicherButton from './SpeicherButton.vue';
 
 export default {
-  name: 'ProfilErstellenSeite',
+  name: 'ProfilBearbeitenSeite',
   components: {
     Header,
     NavBar,
@@ -33,6 +32,14 @@ export default {
     TextFeld2Test,
     SpeicherButton,
   },
+  data:() => ({
+    textAbout:"Ich bin Paula und studiere Informatik im 4. Semester. Meine Lieblingsthemen sind Webtechnologien und Betriebssysteme. In meiner Freizeit bin ich total gerne draußen und mache Yoga, alleine macht es aber weniger spaß, also schreibt mich an",
+    name: "Paula",
+    alter: "22",
+    fachbereich:"Informatik",
+    hobby: "Yoga, Kickboxen"
+    
+  })
 };
 </script>
 
