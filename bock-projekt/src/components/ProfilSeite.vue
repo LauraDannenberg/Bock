@@ -3,8 +3,11 @@
         <Header title="Profile"/>
         <Linie />
         <div id="mitte">
-            <h1>ToDo</h1>
+            <h1>Profil </h1>
+
         </div>
+
+
         <NavBar />
     </div>    
 </template>
@@ -15,7 +18,7 @@ import NavBar from '../components/NavBar.vue';
 import Linie from './LineComponent.vue';
 
 export default {
-  name: 'ChatSeite',
+  name: 'ProfilSeite',
   components: {
     Header,
     NavBar,

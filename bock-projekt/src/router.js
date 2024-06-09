@@ -6,6 +6,7 @@ import ChatSeite from './components/ChatSeite.vue';
 import RegistrationsSeite from './components/RegistrationsSeite.vue'; // Korrigierter Komponentenname
 import ProfilSeite from './components/ProfilSeite.vue';
 import SuchSeite from './components/SuchSeite.vue';
+import ProfilErstellenSeite from './components/ProfilErstellenSeite.vue'
 
 
 const routes = [
@@ -33,6 +34,11 @@ const routes = [
         path: '/Profile',
         name: 'Profile',
         component: ProfilSeite
+    },
+    {
+        path: '/ProfileErstellen',
+        name: 'ProfileErstellen',
+        component: ProfilErstellenSeite
     },
     {
         path: '/Search',

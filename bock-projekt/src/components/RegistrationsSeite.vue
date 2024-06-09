@@ -23,7 +23,7 @@
                     <input type="email" id="email" v-model="email" placeholder="Email eingeben" required />
                 </div>
                 <button type="submit" class="register-button">
-                    <router-link to="/Boards">Registrieren</router-link>
+                     <router-link to="/Boards">Registrieren</router-link> <!--muss die nächste Seite auf die verwiesen wird nicht das erstellen des Profils sein? -->
                 </button>
             </form>
         </div>

@@ -1,0 +1,24 @@
+<template>
+    <button type="submit" class="save-button">
+        <router-link to="/Profil">Speichern</router-link> 
+    </button>
+</template>
+<script>
+    export default{
+        name:"SpeicherButton",
+    }
+</script>
+<style>
+
+.save-button {
+    width: 10vh;
+    padding: 10px;
+    color: #00c853;
+    text-decoration-color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 10px 10px 0px 0px #b370b3, -8px -8px 15px 1px rgba(0,0,0,0);
+
+}</style>
