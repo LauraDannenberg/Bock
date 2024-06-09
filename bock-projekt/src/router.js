@@ -74,7 +74,7 @@ const routes = [
             },
             {
                 path: 'Search',
-                name: 'Search',
+                name: 'Discovery',
                 component: SuchSeite
             },
         ]
