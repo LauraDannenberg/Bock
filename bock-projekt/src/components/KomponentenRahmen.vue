@@ -45,10 +45,10 @@ export default {
 </template>
 <style>
 .kompani-enter-active{
-    transition: all 0.5s;
+    transition: all 0.25s;
 }
 .kompani-leave-active{
-    transition: all 0.5s;
+    transition: all 0.25s;
 }
 
   .kompani-enter-from{
