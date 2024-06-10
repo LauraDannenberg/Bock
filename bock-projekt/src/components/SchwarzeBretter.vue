@@ -3,17 +3,23 @@
         <Header title="Boards"/>
         <Linie />
         <div id="mitte">
-            <h3 style="justify-self: center;">Hobby | Fachbereich</h3>
-
             <div class="board-group">
-                <div class="board-group">
-                    Test Nachricht
+                <h3>Hobby | Fachbereich</h3>
+                <div class="boards">
+                    <div v-for="b in boards" :key="b.id" class="board-item">
+                        <h2 class="board-name">{{ b.name }}</h2>
+                        <div class="nachrichten">
+                            <div v-for="m in message" :key="m.id" class="board-item">
+                            <div class="avatar"></div>
+                            <div class="m-details">
+                            <p v-if="m.newMessage" class="new-message">Neue Nachricht!</p>
+                            <p class="m-name">- {{ m.name }}</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="board-group">
-                    - Test Benutzer
-                </div>
-
             </div>
+        </div>
+    </div>
 
         </div>
         <NavBar />
@@ -26,16 +32,52 @@ import NavBar from '../components/NavBar.vue';
 import Linie from './LineComponent.vue';
 
 export default {
-  name: 'ChatSeite',
-  components: {
-    Header,
-    NavBar,
-    Linie
-  },
+    name: 'SchwarzeBretter',
+    components: {
+        Header,
+        NavBar,
+        Linie
+    },
+    data() {
+        return {
+            message: [
+                { id: 1, name: 'Pauline Musterfrau', newMessage: true },
+                { id: 2, name: 'Max Musterman', newMessage: true }
+            ],
+            boards: [
+                { id: 1, name: 'Yoga'},
+                { id: 2, name: 'Kickboxen'}
+            ]
+        };
+    }
 };
 </script>
 
 <style>
+    .m-name{
+        justify-self: right;
+    }
+    .boards{
+        padding: 20px;
+        background-color: var(--primary-color);
+        height: max-content;
+        overflow-y: auto;
+    }
+    .nachrichten{
+        padding: 20px;
+        background-color: #ffffff;
+        height: max-content;
+        overflow-y: auto;
+    }
+    .board-item{
+        display: flexbox;
+        justify-content: center;
+        background-color: white;
+        padding: 10px;
+        border-radius: 20px;
+        margin-bottom: 10px;
+        box-shadow: 2px 2px 10px #ccc;
+    }
     #oben{
         display: flex;
         height:20vh;
@@ -49,38 +91,23 @@ export default {
         display: flex;
         justify-content: center;
         font-family: sans-serif;
-        height:70vh;
+        height:max-content;
         top: 20vh;
         background-color: var(--primary-color);
         margin: 0%;
-    }
-    #unten{
-        display: flex;
-        height:10vh;
-        top:90vh;
-        justify-content: space-between;
-        align-items: center;
-        background-color: var(--tertiary-color);
-    }
-    #line{
-        height:1vh;
-        background-color: #0f5c2f;
     }
     .navi{
         height: auto;
         max-height: 90%;
     }
-    .board-group{
-        justify-self: center;
-    }
     nav {
-    display: flex;
-    justify-content: space-around;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #fff;
-    padding: 10px 0;
-    box-shadow: 0 -2px 10px #ccc;
-  }
+        display: flex;
+        justify-content: space-around;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #fff;
+        padding: 10px 0;
+        box-shadow: 0 -2px 10px #ccc;
+    }
 </style>
