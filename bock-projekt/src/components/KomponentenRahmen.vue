@@ -58,4 +58,9 @@ export default {
     opacity: 0%;
     
   }
+  #KomponentenContainer{
+    max-height: 70vh;
+    overflow: scroll;
+    background-color: var(--primary-color);
+  }
 </style>
