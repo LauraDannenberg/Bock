@@ -7,7 +7,7 @@
         </div>
         <div id="mitte" class="content">
           
-            <div class="inline">
+            <div>
               <img :src="require('../assets/Yoga.png')" :width="160" alt="Yoga"/>
               <img :src="require('../assets/Boxen.png')" :width="180" alt="Boxen"/>
             </div>
