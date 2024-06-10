@@ -1,36 +1,61 @@
+<script>
+import Header from './HeaderComponent.vue';
+import NavBar from '../components/NavBar.vue';
+import Linie from './LineComponent.vue';
+import { useRoute } from 'vue-router';
+
+
+
+export default {
+  name: 'KomponentenRahmen',
+  components: {
+    Header,
+    NavBar,
+    Linie
+  },
+  setup(){
+   const route=useRoute();
+
+   
+   return route
+}
+};
+
+
+
+
+
+</script>
+
 <template>
-    <div id="oben">
-        <h3>BOCK</h3>
-    </div>
-    <div id="line">
+    <div>
+        <Header v-bind:title="$route.name" />
+        <Linie/>
+        <div id="KomponentenContainer">
+            <router-view v-slot="{ Component }">
+                <transition name="kompani" mode="out-in">
+                    <component :is="Component" />
+                </transition>
+            </router-view>
+            
+        </div>
 
-    </div>
-    <div id="unten">
-
+        <NavBar/>
     </div>
 </template>
-<script>
-</script>
 <style>
-    #oben{
-        display: flex;
-        height:20vh;
+.kompani-enter-active{
+    transition: all 0.25s;
+}
+.kompani-leave-active{
+    transition: all 0.25s;
+}
 
-        justify-content: center;
-        align-items: center;
-        background-color: #e0f7e9;
-    }
-    #unten{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height:77vh;
-        top: 20vh;
-        background-color: #00c853;
-        margin: 0%;
-    }
-    #line{
-        height:1vh;
-        background-color: #0f5c2f;
-    }
+  .kompani-enter-from{
+    opacity: 0%;
+  }
+  .kompani-leave-to{
+    opacity: 0%;
+    
+  }
 </style>

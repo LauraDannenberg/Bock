@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view v-slot="{ Component }">
-      <transition name="fade" mode="out-in">
+      <transition>
         <component :is="Component"></component>
       </transition>
     </router-view>
@@ -29,10 +29,20 @@ export default {
   background-color: var(--primary-color);
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
+  .v-enter-active{
+    animation: fade-in 0.3s; 
+  }
+  .v-leave-active{
+    animation: bounce-in 0.5s reverse;
+  }
+  @keyframes bounce-in{
+    0% {transform: scale(0);}
+    50% {transform: scale(1.25);}
+    100%{transform: scale(1);}
+  }  
+  @keyframes fade-in{
+    0% {opacity: 0%;}
+    100% {opacity: 100%;}
+  }
+
 </style>

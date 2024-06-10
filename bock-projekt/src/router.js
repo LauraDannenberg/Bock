@@ -8,6 +8,7 @@ import ProfilSeite from './components/ProfilSeite.vue';
 import SuchSeite from './components/SuchSeite.vue';
 import ProfilErstellenSeite from './components/ProfilErstellenSeite.vue'
 import ProfilBearbeitenSeite from './components/ProfilBearbeitenSeite.vue'
+import AppNav from './components/KomponentenRahmen.vue'
 
 const routes = [
     {
@@ -27,7 +28,7 @@ const routes = [
     },
     {
         path: '/LogIn',
-        name: 'LogIn',
+        name: 'Login',
         component: RegistrationsSeite
     },
     {
@@ -49,6 +50,35 @@ const routes = [
         path: '/Search',
         name: 'Search',
         component: SuchSeite
+    },
+    {
+        path: '/App',
+        name: 'App',
+        component: AppNav,
+        redirect: '/App/Profile',
+        children: [
+            {
+                path: 'Boards',
+                name: 'Boards',
+                component: SchwarzeBretter
+            },
+            {
+                path: 'Chat',
+                name: 'Chat',
+                component: ChatSeite
+            },
+            {
+                path: 'Profile',
+                name: 'Profil',
+                component: ProfilSeite
+            },
+            {
+                path: 'Search',
+                name: 'Discovery',
+                component: SuchSeite
+            },
+        ]
+
     },
     // Füge weitere Routen hinzu
 ];

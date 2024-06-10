@@ -1,7 +1,5 @@
 <template>
     <div class="Boards">
-        <Header title="Boards"/>
-        <Linie />
         <div id="mitte">
             <div class="board-group">
                 <h3>Hobby | Fachbereich</h3>
@@ -22,16 +20,16 @@
     </div>
 
         </div>
-        <NavBar />
     </div>    
 </template>
 
 <script>
-import Header from './HeaderComponent.vue';
-import NavBar from '../components/NavBar.vue';
-import Linie from './LineComponent.vue';
+
 
 export default {
+
+
+
     name: 'SchwarzeBretter',
     components: {
         Header,
@@ -50,6 +48,7 @@ export default {
             ]
         };
     }
+
 };
 </script>
 
@@ -93,7 +92,7 @@ export default {
         font-family: sans-serif;
         height:max-content;
         top: 20vh;
-        background-color: var(--primary-color);
+        
         margin: 0%;
     }
     .navi{

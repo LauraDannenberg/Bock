@@ -1,7 +1,5 @@
 <template>
     <div class="profil">
-        <Header title="Profil"/>
-        <Linie />
         <div class=" rechts">
               <button type="submit" >
                 <router-link to="/ProfilBearbeitenSeite"><img :width="35" :src="require('../assets/Stift.png')"></router-link>
@@ -29,22 +27,15 @@
         </div>
 
 
-        <NavBar />
+        
     </div>    
 </template>
 
 <script>
-import Header from './HeaderComponent.vue';
-import NavBar from '../components/NavBar.vue';
-import Linie from './LineComponent.vue';
+
 
 export default {
   name: 'ProfilSeite',
-  components: {
-    Header,
-    NavBar,
-    Linie
-  },
   data:() => ({
     textAbout:"Ich bin Paula und studiere Informatik im 4. Semester. Meine Lieblingsthemen sind Webtechnologien und Betriebssysteme. In meiner Freizeit bin ich total gerne draußen und mache Yoga, alleine macht es aber weniger spaß, also schreibt mich an",
     name: "Paula",
@@ -64,7 +55,7 @@ export default {
     justify-content: center;
     align-items: center;
     height:75vh;
-    background-color: #00c853;
+    
 }
 .rechts{
    display: flex;
