@@ -22,9 +22,11 @@
                     <label for="email">Email</label>
                     <input type="email" id="email" v-model="email" placeholder="Email eingeben" required />
                 </div>
+            <router-link to="/App/Profile/create">
                 <button type="submit" class="register-button">
-                     <router-link to="/App/Profile/create">Registrieren</router-link> <!--muss die nächste Seite auf die verwiesen wird nicht das erstellen des Profils sein? -->
+                     Registrieren
                 </button>
+            </router-link> 
             </form>
         </div>
         

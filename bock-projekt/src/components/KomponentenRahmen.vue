@@ -63,8 +63,10 @@ export default {
 
   .KomponentenContainer{
     max-height: 70vh;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     background-color: var(--primary-color);
+    scroll-behavior: smooth;
   }
   .activeProfileCreation{
     max-height: 80vh;
