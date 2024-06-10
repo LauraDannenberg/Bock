@@ -80,6 +80,12 @@ const routes = [
                         name: 'Profil',
                         component: ProfilSeite
                     },
+                    {
+                        path: 'create',
+                        name: 'Profil erstellen',
+                        component: ProfilErstellenSeite
+                    },
+
                 ]
             },
             {

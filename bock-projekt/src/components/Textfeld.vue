@@ -41,6 +41,8 @@ form {
     margin-top: -20px;
     border-radius: 10px;
     box-shadow: 10px 10px 0px 0px #b370b3, -8px -8px 15px 1px rgba(0,0,0,0);
+    overflow: scroll;
+    
 }
 
 .form-group {

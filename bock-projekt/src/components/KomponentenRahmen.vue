@@ -3,6 +3,8 @@ import Header from './HeaderComponent.vue';
 import NavBar from '../components/NavBar.vue';
 import Linie from './LineComponent.vue';
 import { useRoute } from 'vue-router';
+import {ref} from 'vue'
+
 
 
 
@@ -14,7 +16,7 @@ export default {
     Linie
   },
   setup(){
-   const route=useRoute();
+   const route=ref(useRoute());
 
    
    return route
@@ -31,7 +33,7 @@ export default {
     <div>
         <Header v-bind:title="$route.name" />
         <Linie/>
-        <div id="KomponentenContainer">
+        <div class="KomponentenContainer" :class="{activeProfileCreation:$route.name=='Profil erstellen'}">
             <router-view v-slot="{ Component }">
                 <transition name="kompani" mode="out-in">
                     <component :is="Component" />
@@ -40,7 +42,7 @@ export default {
             
         </div>
 
-        <NavBar/>
+        <NavBar v-if="$route.name!='Profil erstellen'"/>
     </div>
 </template>
 <style>
@@ -58,9 +60,15 @@ export default {
     opacity: 0%;
     
   }
-  #KomponentenContainer{
+
+  .KomponentenContainer{
     max-height: 70vh;
     overflow: scroll;
     background-color: var(--primary-color);
   }
+  .activeProfileCreation{
+    max-height: 80vh;
+    height:80vh;
+  }
+
 </style>
