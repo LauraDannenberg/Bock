@@ -22,11 +22,11 @@
                     <label for="email">Email</label>
                     <input type="email" id="email" v-model="email" placeholder="Email eingeben" required />
                 </div>
-            <router-link to="/App/Profile/create">
-                <button type="submit" class="register-button">
-                     Registrieren
-                </button>
-            </router-link> 
+                <router-link to="/App/Profile/create">
+                    <button type="submit" class="register-button">
+                        Registrieren
+                    </button>
+                </router-link> 
             </form>
         </div>
         
@@ -61,6 +61,7 @@ form {
     margin-top: -20px;
     border-radius: 10px;
     box-shadow: 10px 10px 0px 0px #b370b3, -8px -8px 15px 1px rgba(0,0,0,0);
+    overflow: hidden;
 }
 .form-group {
     margin-bottom: 20px;
