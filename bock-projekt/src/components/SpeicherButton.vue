@@ -1,7 +1,9 @@
 <template>
+    <router-link to="/Profile">
     <button type="submit" class="save-button">
-        <router-link to="/Profile">Speichern</router-link> 
+        Speichern
     </button>
+</router-link> 
 </template>
 <script>
     export default{
@@ -11,7 +13,7 @@
 <style>
 
 .save-button {
-    width: 10%;
+    width: 10vw;
     margin : 0 0 5% 0;
     padding: 10px;
     color: #00c853;
