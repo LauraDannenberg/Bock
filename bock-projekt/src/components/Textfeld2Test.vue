@@ -3,14 +3,17 @@
     <form>
             
             <div class="form-group">
-                <textarea id="about" cols="30" rows="4" v-model="about" placeholder="Erzähle uns etwas über dich! " required ></textarea>
+                <textarea id="about" cols="30" rows="4" v-model="about" :placeholder='placeholder' required ></textarea>
             </div>
     </form>
     </div>
 </template>
 <script>
  export default{
-    name:"TextFeld2Test"
+    name:"TextFeld2Test",
+    props:{
+        placeholder:{type:String, default:"Erzähle uns etwas über dich! " },
+    }
 }
 </script>
 <style>

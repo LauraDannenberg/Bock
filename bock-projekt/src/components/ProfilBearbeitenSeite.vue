@@ -2,7 +2,7 @@
     <div class="Profilerstellen">
         <div id="content">
           <TextFeld :name="name" :alter="alter" :fb="fachbereich" :hobby="hobby"/>
-          <TextFeld2Test /> 
+          <TextFeld2Test :placeholder="textAbout"/> 
           <SpeicherButton />
             
         </div>

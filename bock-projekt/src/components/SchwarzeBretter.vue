@@ -7,11 +7,12 @@
                     <div v-for="b in boards" :key="b.id" class="board-item">
                         <h2 class="board-name">{{ b.name }}</h2>
                         <div class="nachrichten">
-                            <div v-for="m in message" :key="m.id" class="board-item">
-                            <div class="avatar"></div>
+                            <div v-for="m in message" :key="m.id" class="board-item message">
+                            
                             <div class="m-details">
-                            <p v-if="m.newMessage" class="new-message">Neue Nachricht!</p>
                             <p class="m-name">- {{ m.name }}</p>
+                            <p v-if="m.newMessage" class="new-message">{{ m.text}}</p>
+                            
                         </div>
                     </div>
                 </div>
@@ -34,8 +35,8 @@ export default {
     data() {
         return {
             message: [
-                { id: 1, name: 'Pauline Musterfrau', newMessage: true },
-                { id: 2, name: 'Max Musterman', newMessage: true }
+                { id: 1, name: 'Pauline Musterfrau', newMessage: true, text: 'Was ist eigentlich der Plural von Campus?' },
+                { id: 2, name: 'Max Musterman', newMessage: true, text: 'Freue mich schon auf die Yogastunde heute am Campus!' }
             ],
             boards: [
                 { id: 1, name: 'Yoga'},
@@ -48,20 +49,27 @@ export default {
 </script>
 
 <style>
+h3{
+    text-align: center;
+}
     .m-name{
-        justify-self: right;
+        /* text-align: right;*/
+        color: grey;
     }
     .boards{
         padding: 20px;
         background-color: var(--primary-color);
         height: max-content;
+        width: 70vw;
         overflow-y: auto;
+        
     }
     .nachrichten{
         padding: 20px;
         background-color: #ffffff;
         height: max-content;
         overflow-y: auto;
+        
     }
     .board-item{
         display: flexbox;
@@ -72,6 +80,15 @@ export default {
         margin-bottom: 10px;
         box-shadow: 2px 2px 10px #ccc;
     }
+    .message{
+        border-color: black; 
+        box-shadow: 10px 10px 0px 0px #b370b3, -8px -8px 15px 1px rgba(0,0,0,0);   
+    }
+
+    .board-name{
+        text-align: center;
+    }
+
     #oben{
         display: flex;
         height:20vh;
@@ -104,4 +121,5 @@ export default {
         padding: 10px 0;
         box-shadow: 0 -2px 10px #ccc;
     }
+    
 </style>
