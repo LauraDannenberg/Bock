@@ -31,11 +31,6 @@ export default {
 
 
     name: 'SchwarzeBretter',
-    components: {
-        Header,
-        NavBar,
-        Linie
-    },
     data() {
         return {
             message: [
