@@ -1,15 +1,22 @@
 <!-- src/components/NavBar.vue -->
+<script setup> 
+import { useRoute } from 'vue-router';
+import {ref} from 'vue'
+const route = ref(useRoute())
+</script>
 <template>
     <nav>
-      <router-link to="/App/Boards"><img src="../assets/Boards.png" alt="Boards"></router-link>
-      <router-link to="/App/Search"><img src="../assets/Lupe.png" alt="Search"></router-link>
-      <router-link to="/App/Chat"><img src="../assets/Chat.png" alt="Chat"></router-link>
-      <router-link to="/App/Profile"><img src="../assets/Männchen.png" alt="Profile"></router-link>
+      <router-link to="/App/Boards" class="noHL" :class="{highlighted:route.name=='Boards'}"><img src="../assets/Boards.png" alt="Boards" ></router-link>
+      <router-link to="/App/Search" class="noHL" :class="{highlighted:route.name=='Discovery'}"><img src="../assets/Lupe.png" alt="Search" ></router-link>
+      <router-link to="/App/Chat" class="noHL" :class="{highlighted:route.name=='Chat'}"><img src="../assets/Chat.png" alt="Chat" ></router-link>
+      <router-link to="/App/Profile" class="noHL" :class="{highlighted:route.name=='Profil'}"><img src="../assets/Männchen.png" alt="Profile" ></router-link>
     </nav>
 </template>
   
-<script setup>
-</script>
+
+
+
+
   
 <style scoped>
 nav {
@@ -26,6 +33,25 @@ nav {
 }
 img {
   height: 7vh;
+  margin: 0;
+  
 }
+.noHL{
+  border: #00000000 dashed;
+  border-radius: 1vh;
+  height: 8vh;
+  width: 9.5vh;
+  display: flex;
+  align-content: baseline;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+}
+.highlighted{
+ border: #00000000 dashed;
+ border-radius: 1vh;
+ background-color: #cfcece9a;
+}
+
 </style>
   
