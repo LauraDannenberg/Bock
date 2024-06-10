@@ -2,7 +2,7 @@
     <div class="profil">
         <div class=" rechts">
               <button type="submit" >
-                <router-link to="/ProfilBearbeitenSeite"><img :width="35" :src="require('../assets/Stift.png')"></router-link>
+                <router-link to="/App/Profile/Bearbeiten"><img :width="35" :src="require('../assets/Stift.png')"></router-link>
               </button>
         </div>
         <div id="mitte" class="content">

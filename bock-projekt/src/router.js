@@ -9,6 +9,7 @@ import SuchSeite from './components/SuchSeite.vue';
 import ProfilErstellenSeite from './components/ProfilErstellenSeite.vue'
 import ProfilBearbeitenSeite from './components/ProfilBearbeitenSeite.vue'
 import AppNav from './components/KomponentenRahmen.vue'
+import ProfilTab from './components/ProfilTab.vue';
 
 const routes = [
     {
@@ -34,17 +35,13 @@ const routes = [
     {
         path: '/Profile',
         name: 'Profile',
+        redirect: '/App/Profile',
         component: ProfilSeite
     },
     {
         path: '/ProfileErstellen',
         name: 'ProfileErstellen',
         component: ProfilErstellenSeite
-    },
-    {
-        path: '/ProfilBearbeitenSeite',
-        name: 'ProfilBearbeitenSeite',
-        component: ProfilBearbeitenSeite
     },
     {
         path: '/Search',
@@ -70,7 +67,20 @@ const routes = [
             {
                 path: 'Profile',
                 name: 'Profil',
-                component: ProfilSeite
+                redirect: '/App/Profile/view',
+                component: ProfilTab,
+                children:[
+                    {
+                        path: 'Bearbeiten',
+                        name: 'Profil bearbeiten',
+                        component: ProfilBearbeitenSeite
+                    },
+                    {
+                        path: 'view',
+                        name: 'Profil',
+                        component: ProfilSeite
+                    },
+                ]
             },
             {
                 path: 'Search',

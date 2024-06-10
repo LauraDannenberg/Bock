@@ -1,7 +1,5 @@
 <template>
     <div class="Profilerstellen">
-        <Header title="Profil bearbeiten"/>
-        <Linie />
         <div id="content">
           <TextFeld :name="name" :alter="alter" :fb="fachbereich" :hobby="hobby"/>
           <TextFeld2Test /> 
@@ -9,15 +7,10 @@
             
         </div>
  
-
-        <NavBar />
     </div>    
 </template>
 
 <script>
-import Header from './HeaderComponent.vue';
-import NavBar from '../components/NavBar.vue';
-import Linie from './LineComponent.vue';
 import TextFeld from './Textfeld.vue';
 import TextFeld2Test from './Textfeld2Test.vue';
 import SpeicherButton from './SpeicherButton.vue';
@@ -25,9 +18,6 @@ import SpeicherButton from './SpeicherButton.vue';
 export default {
   name: 'ProfilBearbeitenSeite',
   components: {
-    Header,
-    NavBar,
-    Linie,
     TextFeld,
     TextFeld2Test,
     SpeicherButton,
