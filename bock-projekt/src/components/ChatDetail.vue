@@ -81,7 +81,6 @@
         position: absolute;
         bottom: 10vh;
         left: 0;
-        padding-left: 1vh;
         height: 8vh;
         width: 100%;
         display: flex;
