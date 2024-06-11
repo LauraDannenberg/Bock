@@ -32,6 +32,7 @@
     vertical-align: middle;
     padding: 1vh;
     align-content: center;
+    overflow-x: hidden;
   }
   
   .logo {

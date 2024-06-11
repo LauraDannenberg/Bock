@@ -9,10 +9,7 @@ export default {
     {id: 2, name: "Pauline Musterfrau", alter: "20", fachbereich: 'Informatik und Elektrotechnik',hobbies:["Webdevelopment","Kickboxen","Häkeln"],beschreibung: "Wenn ich Webseiten baue brauchen die unnedingt ganz viel Klickibunti"},
     {id: 2, name: "Chris Musterperson", alter: "20", fachbereich: 'Architektur',hobbies:["Lego","Minecraft","Züge"],beschreibung: "Ich mag Züge."},
     {id: 2, name: "Dieter Bohlen", alter: "100+", fachbereich: '"Musik"',hobbies:["Coinmaster"],beschreibung: "Von Bohlen empfohlen."},
-    {id: 1, name: "Mark Fischbach", alter: 34, fachbereich: "Yes",hobbies:["Youtube","FNAF","Linsen"],beschreibung: "Hello everybody, my name is Markiplier and welcome to Five Nights at Freddy's, an indie horror game that you guys suggested, en masse, and I saw that Yamimash played it and he said it was really really good... So I'm very eager to see what is up. And that is a terrifying animatronic bear!"},
-       
-    {id: 2, name: "Albert Einstein", alter: "100+", fachbereich: "Irgendwas Schlaues",hobbies:["Denken","Mathe","Physik"],beschreibung: "Ich bin der echte Albert, gib mir deine Kreditkarteninformationen."},
-        
+    
         
         
         
@@ -110,7 +107,7 @@ h2{
     align-self: center;
     justify-self: center;
     border-radius: 5px;
-    width: 15vw;
+    width: 15vh;
     height: 5vh;
     margin-left: 1vh;
     
