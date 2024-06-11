@@ -11,6 +11,7 @@ import ProfilBearbeitenSeite from './components/ProfilBearbeitenSeite.vue'
 import AppNav from './components/KomponentenRahmen.vue'
 import ProfilTab from './components/ProfilTab.vue';
 import ChatVerlauf from './components/ChatVerlauf.vue'
+import ChatDetail from './components/ChatDetail.vue'
 
 const routes = [
     {
@@ -66,11 +67,17 @@ const routes = [
                 component: ChatSeite
             },
             {
-                path:'Chat/:id',
+                path:'Chat/hue/',
                 name: 'Chat',
                 component: ChatVerlauf,
                 props: true
             },
+            {
+                path: 'Chat/',
+                name: 'Pauline Musterfrau',
+                component: ChatDetail
+            },
+            
             {
                 path: 'Profile',
                 name: 'Profil',
