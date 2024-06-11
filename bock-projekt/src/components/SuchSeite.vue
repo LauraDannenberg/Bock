@@ -85,18 +85,14 @@ export default {
 }
 .nutzerIcons{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    justify-self: center;
-    flex-wrap: wrap;
-    justify-items: center;
-    align-items: center;
-    flex-flow: wrap row;
+    justify-content: space-around;
+    flex-direction: column;
 }
 img{
     height: 5vh;
     justify-self: center;
     align-self: center;
+    margin: 1vh;
 }
 h2{
     font-family: Arial, Helvetica, sans-serif;
