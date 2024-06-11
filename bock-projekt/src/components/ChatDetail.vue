@@ -55,7 +55,7 @@
   };
   </script>
   
-<style>
+<style scoped>
     .chat-container{
         width: 100%;
     }
