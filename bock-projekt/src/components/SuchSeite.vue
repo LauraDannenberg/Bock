@@ -82,7 +82,7 @@ export default {
     padding: 6vh;
     padding-top: 2vh;
     padding-bottom: 2vh;
-    overflow-y: scroll;
+    overflow-y: hidden;
     overflow-x: hidden;
     font-size: calc((1vw+1vh));
 }
