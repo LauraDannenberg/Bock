@@ -67,6 +67,12 @@ export default {
     overflow-x: hidden;
     background-color: var(--primary-color);
     scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    
+  }
+  .KomponentenContainer::-webkit-scrollbar{
+    display: none;
   }
   .activeProfileCreation{
     max-height: 80vh;
