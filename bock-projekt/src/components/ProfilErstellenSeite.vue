@@ -1,9 +1,12 @@
 <template>
     <div class="Profilerstellen">
-        <div id="content">           
-          <TextFeld />
-          <TextFeld2Test />
-          <SpeicherButton />            
+        <div id="content">   
+          <div class="Textfelder">        
+            <TextFeld class="Textfeld"/>
+            <TextFeld2Test class="Textfeld"/>
+          </div>
+          <SpeicherButton /> 
+                   
         </div>
  
     </div>    
@@ -33,5 +36,8 @@ export default {
     align-content: center;
     height:100vh;
     background-color: #00c853;
+}
+.Textfeld{
+margin-bottom: 5vh;
 }
 </style>
