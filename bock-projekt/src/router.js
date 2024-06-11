@@ -10,6 +10,7 @@ import ProfilErstellenSeite from './components/ProfilErstellenSeite.vue'
 import ProfilBearbeitenSeite from './components/ProfilBearbeitenSeite.vue'
 import AppNav from './components/KomponentenRahmen.vue'
 import ProfilTab from './components/ProfilTab.vue';
+import ChatVerlauf from './components/ChatVerlauf.vue'
 
 const routes = [
     {
@@ -60,9 +61,15 @@ const routes = [
                 component: SchwarzeBretter
             },
             {
-                path: 'Chat',
-                name: 'Chat',
+                path: 'Chats',
+                name: 'Chats',
                 component: ChatSeite
+            },
+            {
+                path:'Chat/:id',
+                name: 'Chat',
+                component: ChatVerlauf,
+                props: true
             },
             {
                 path: 'Profile',

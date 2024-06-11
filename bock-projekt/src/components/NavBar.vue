@@ -8,7 +8,7 @@ const route = ref(useRoute())
     <nav>
       <router-link to="/App/Boards" class="noHL" :class="{highlighted:route.name=='Boards'}"><img src="../assets/Boards.png" alt="Boards" ></router-link>
       <router-link to="/App/Search" class="noHL" :class="{highlighted:route.name=='Discovery'}"><img src="../assets/Lupe.png" alt="Search" ></router-link>
-      <router-link to="/App/Chat" class="noHL" :class="{highlighted:route.name=='Chat'}"><img src="../assets/Chat.png" alt="Chat" ></router-link>
+      <router-link to="/App/Chats" class="noHL" :class="{highlighted:route.name=='Chats' ||route.name=='Chat'}"><img src="../assets/Chat.png" alt="Chat" ></router-link>
       <router-link to="/App/Profile" class="noHL" :class="{highlighted:route.name=='Profil'}"><img src="../assets/Männchen.png" alt="Profile" ></router-link>
     </nav>
 </template>
