@@ -62,7 +62,7 @@ h3{
         height: max-content;
         width: 70vw;
         overflow-y: auto;
-        
+           
     }
     .nachrichten{
         padding: 20px;
@@ -79,6 +79,7 @@ h3{
         border-radius: 20px;
         margin-bottom: 10px;
         box-shadow: 2px 2px 10px #ccc;
+        outline: 0.3vh green solid;
     }
     .message{
         border-color: black; 
