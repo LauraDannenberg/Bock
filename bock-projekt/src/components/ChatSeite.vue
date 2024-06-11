@@ -36,7 +36,7 @@ export default {
 .chat-list {
   padding: 20px;
   height: calc(100vh - 140px);
-  overflow-y: auto;
+  overflow-y: visible;
 }
 
 .chat-item {
