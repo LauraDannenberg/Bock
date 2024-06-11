@@ -29,8 +29,9 @@ form{
     width: 50vw;
 }
 #about{
-    margin: 0;
+    margin-bottom: 2vh;
     padding-top:-50vh;
+    width: 100%;
 }
 textarea, input{
     border-style: none
