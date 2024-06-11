@@ -55,6 +55,7 @@ export default {
     align-content:space-around;
     overflow-x: scroll;
     scroll-behavior: smooth;
+    scrollbar-gutter: 1vh;
     padding-top: 1vh;
     padding-left: 2.5vw;
     padding-right: 2.5vw;
@@ -104,6 +105,7 @@ h2{
     border-radius: 5px;
     width: 15vw;
     height: 5vh;
+    margin-left: 1vh;
     
 
 }
