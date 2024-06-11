@@ -17,6 +17,7 @@ export default {
   },
   setup(){
    const route=ref(useRoute());
+   
 
    
    return route

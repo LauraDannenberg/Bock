@@ -2,7 +2,7 @@
 <template>
   <div>
     <div class="chat-list">
-      <div v-for="chat in chats" :key="chat.id" class="chat-item" @click="goToChatDetail(chat.id, chat.newMessage)">
+      <div v-for="chat in chats" :key="chat.id" class="chat-item" @click="goToChatDetail(chat.id)">
         <div class="avatar">
           <img class="img-fluid" :src="require(`@/assets/${chat.profilbild}`)" alt="">
         </div>
@@ -31,8 +31,8 @@ export default {
     };
   },
   methods: {
-    goToChatDetail(id, newMessage){
-      this.$router.push({ name: 'Pauline Musterfrau', params: { id }, query: { newMessage } });
+    goToChatDetail(id){
+      this.$router.push({ name: 'Pauline Musterfrau', params: { id }});
     }
   }
 };

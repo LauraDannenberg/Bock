@@ -1,23 +1,23 @@
 <template>
     <div class="chat-container">
       <div class="chat-messages" ref="chatMessages">
-        <div v-if="chatNeue" class="message other-side">
+        <div v-if="id==1" class="message ">
           <p>Hey hast du das Relegationsspiel Düsseldorf gegen Bochum in Düsseldorf gesehen? </p>
         </div>
-        <div v-if="chatNeue" class="message">
+        <div v-if="id==1" class="message other-side">
           <p>Ja das war mega, selten so ein spannendes Spiel gesehen </p>
         </div>
-        <div v-if="chatNeue" class="message other-side">
+        <div v-if="id==1" class="message">
           <p>Jaaa und zum Glück mit einem Happy End </p>
         </div>
-        <div v-if="chatNeue" class="message">
+        <div v-if="id==1" class="message other-side">
           <p>Ja das auf jeden Fall, zum Glück nächstes Jahr wieder erste Liga </p>
         </div>
-        <div v-if="chatNeue" class="message other-side">
+        <div v-if="id==1" class="message">
           <p>Jaaa</p>
         </div>
 
-        <div v-for="(message, index) in chatMessages" :key="index" class="message">
+        <div v-for="(message, index) in chatMessages" :key="index" class="message other-side">
           <p>{{ message }}</p>
         </div>
       </div>
@@ -48,6 +48,9 @@
           this.newMessage = '';
         }
       }
+    },
+    props: {
+      id: String
     }
   };
   </script>
@@ -78,6 +81,7 @@
         position: absolute;
         bottom: 10vh;
         left: 0;
+        padding-left: 1vh;
         height: 8vh;
         width: 100%;
         display: flex;
