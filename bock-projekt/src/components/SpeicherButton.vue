@@ -13,8 +13,9 @@
 <style>
 
 .save-button {
-    width: 10vw;
-    margin : 0 0 5% 0;
+    width: 15vw;
+    font-size: 0.6 rem;
+    margin : 2vh 0 5vh 0;
     padding: 10px;
     color: #00c853;
     border: none;

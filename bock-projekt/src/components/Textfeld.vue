@@ -2,7 +2,7 @@
     <div class="textfeld">
     <form>
             <div class="form-group">
-                <input type="text" id="firstname" v-model="firstname" :placeholder="name" required />
+                <input type="text" id="firstname" v-model="firstname" :placeholder="name" required class="Firstname" />
                 </div>
                 <ul>
                 <div class="form-group">
@@ -37,8 +37,7 @@
 <style>
 form {
     background-color: white;
-    padding: 50px;
-    margin-top: -20px;
+    padding: 0 50px 0 50px;
     border-radius: 10px;
     box-shadow: 10px 10px 0px 0px #b370b3, -8px -8px 15px 1px rgba(0,0,0,0);
     overflow: scroll;
@@ -46,14 +45,17 @@ form {
 }
 
 .form-group {
-    margin-bottom: 20px;
-    margin-left: 0px;
-    margin-right: 10px;
-    margin-top: 5px;
+    margin: 2vh 0 0 0;
+}
+
+
+.Firstname{
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 .textfeld{
-    margin-bottom: 5%; 
+    
 }
 
 </style>
