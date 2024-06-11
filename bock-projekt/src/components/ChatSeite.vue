@@ -52,6 +52,7 @@ export default {
   border-radius: 20px;
   margin-bottom: 10px;
   box-shadow: 2px 2px 10px #ccc;
+  cursor: pointer;
 }
 
 .avatar {
