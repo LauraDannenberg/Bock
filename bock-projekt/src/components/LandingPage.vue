@@ -5,7 +5,7 @@
   <transition>
   <div id="bild">
     <router-link to="/LogIn">
-      <img class="logo" src="../assets/bock_logo4_upscaled.png" />
+      <img class="logo pulse" src="../assets/bock_logo4_upscaled.png" />
     </router-link>
   </div>
 </transition>
@@ -28,10 +28,13 @@
     justify-content: center; /* Horizontal zentrieren */
     align-items: center; /* Vertikal zentrieren */
     height: 100vh; /* Vollständige Bildschirmhöhe */
+    
 }
 
 .logo {
     max-width: 80vh; /* Maximale Breite des Containers */
     max-height: 80vh; /* Maximale Höhe des Containers */
 }
+
+
 </style>

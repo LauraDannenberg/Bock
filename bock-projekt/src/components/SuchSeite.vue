@@ -56,7 +56,7 @@ export default {
 <style scoped>
 .Vorschlaege{
     display: flex;
-    height: 75vh;
+    height: 70vh;
     width: auto;
     align-content:space-around;
     overflow-x: scroll;
@@ -65,6 +65,7 @@ export default {
     padding-top: 1vh;
     padding-left: 2.5vw;
     padding-right: 2.5vw;
+    
 }
 .container{
     margin-left:2.5vw;
