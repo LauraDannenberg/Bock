@@ -2,7 +2,7 @@
     <div class="Boards">
         <div id="mitte">
             <div class="board-group">
-                <h3>Hobby | Fachbereich</h3>
+                <h3><div class="selected">Hobby </div>| <div class="notSelected">  Fachbereich</div></h3>
                 <div class="boards">
                     <div v-for="b in boards" :key="b.id" class="board-item">
                         <h2 class="board-name">{{ b.name }}</h2>
@@ -123,4 +123,17 @@ h3{
         box-shadow: 0 -2px 10px #ccc;
     }
     
+    .selected{
+        color: var(--secondary-color);
+    }
+
+    .selected, .notSelected{
+        margin: 0 0.5rem;
+    }
+
+    h3{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
 </style>
