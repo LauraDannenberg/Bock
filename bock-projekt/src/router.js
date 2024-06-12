@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import LandingPage from './components/LandingPage.vue';
 import SchwarzeBretter from './components/SchwarzeBretter.vue';
 import ChatSeite from './components/ChatSeite.vue';
-import RegistrationsSeite from './components/RegistrationsSeite.vue'; // Korrigierter Komponentenname
+//import RegistrationsSeite from './components/RegistrationsSeite.vue'; // Korrigierter Komponentenname
 import ProfilSeite from './components/ProfilSeite.vue';
 import SuchSeite from './components/SuchSeite.vue';
 import ProfilErstellenSeite from './components/ProfilErstellenSeite.vue'
@@ -12,6 +12,8 @@ import AppNav from './components/KomponentenRahmen.vue'
 import ProfilTab from './components/ProfilTab.vue';
 import ChatDetail from './components/ChatDetail.vue'
 import BoardFachbereich from './components/BoardFachbereich.vue'
+import AnmeldeSeite from './components/AnmeldeSeite.vue'
+import RegistrationsSeite from './components/RegistrationsSeite.vue';
 
 const routes = [
     {
@@ -32,6 +34,11 @@ const routes = [
     {
         path: '/LogIn',
         name: 'Login',
+        component: AnmeldeSeite
+    },
+    {
+        path: '/Registration',
+        name: 'Registration',
         component: RegistrationsSeite
     },
     {

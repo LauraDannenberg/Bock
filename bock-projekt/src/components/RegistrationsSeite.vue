@@ -1,7 +1,7 @@
 <template>
     <div class="Registration">
 
-        <Header title="Login"/>
+        <Header title="Registration"/>
         <Linie />
 
         <div id="unten">
