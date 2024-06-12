@@ -4,7 +4,6 @@
           <TextFeld :name="name" :alter="alter" :fb="fachbereich" :hobby="hobby"/>
           <TextFeld2Test :placeholder="textAbout"/> 
           <SpeicherButton />
-            
         </div>
  
     </div>    
@@ -28,7 +27,6 @@ export default {
     alter: "Alter: 22",
     fachbereich:"Fachbereich: Informatik",
     hobby: "Hobbys: Yoga, Kickboxen"
-    
   })
 };
 </script>
