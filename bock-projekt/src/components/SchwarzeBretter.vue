@@ -2,7 +2,13 @@
     <div class="Boards">
         <div id="mitte">
             <div class="board-group">
-                <h3><div class="selected">Hobby </div>| <div class="notSelected">  Fachbereich</div></h3>
+                <h3>
+                    <div class="selected">Hobby </div>
+                    | 
+                    <div class="notSelected">  <router-link to="/App/Boards/Fachbereich">Fachbereich</router-link>
+                    
+                    </div>
+                </h3>
                 <div class="boards">
                     <div v-for="b in boards" :key="b.id" class="board-item">
                         <h2 class="board-name">{{ b.name }}</h2>
@@ -129,6 +135,7 @@ h3{
 
     .selected, .notSelected{
         margin: 0 0.5rem;
+        cursor: pointer;
     }
 
     h3{

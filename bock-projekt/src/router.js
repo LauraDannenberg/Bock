@@ -11,6 +11,7 @@ import ProfilBearbeitenSeite from './components/ProfilBearbeitenSeite.vue'
 import AppNav from './components/KomponentenRahmen.vue'
 import ProfilTab from './components/ProfilTab.vue';
 import ChatDetail from './components/ChatDetail.vue'
+import BoardFachbereich from './components/BoardFachbereich.vue'
 
 const routes = [
     {
@@ -57,9 +58,15 @@ const routes = [
         children: [
             {
                 path: 'Boards',
-                name: 'Boards',
+                name: 'Boards - Hobby',
                 component: SchwarzeBretter
             },
+            {
+                path: 'Boards/Fachbereich',
+                name: 'Boards - Fachbereich',
+                component: BoardFachbereich
+            },
+            
             {
                 path: 'Chats',
                 name: 'Chats',
