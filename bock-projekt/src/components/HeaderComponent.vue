@@ -54,6 +54,9 @@
   }
   h3{
     margin: 0;
+    line-height: 8vh;
+    text-wrap: balance;
+
   }
   router-link{
     margin: 0;
