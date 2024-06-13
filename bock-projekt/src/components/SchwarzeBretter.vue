@@ -18,9 +18,10 @@
                             <div class="m-details">
                             <p class="m-name">- {{ m.name }}</p>
                             <p v-if="m.newMessage" class="new-message">{{ m.text}}</p>
-                            
                         </div>
                     </div>
+                    <img src="../assets/Pfeil.jpg" @click="toggleBoard(b.id)" id="pfeil">
+                            <div v-if="b.expanded"> Weitere Posts</div>
                 </div>
             </div>
         </div>
@@ -45,16 +46,27 @@ export default {
                 { id: 2, name: 'Max Musterman', newMessage: true, text: 'Freue mich schon auf die Yogastunde heute am Campus!' }
             ],
             boards: [
-                { id: 1, name: 'Yoga'},
-                { id: 2, name: 'Kickboxen'}
+                { id: 0, name: 'Yoga'},
+                { id: 1, name: 'Kickboxen'}
             ]
         };
-    }
+    },
+    
+    methods: {
+        toggleBoard(index) {
+            this.boards[index].expanded = !this.boards[index].expanded;
+        },
+    },
 
 };
 </script>
 
 <style>
+#pfeil{
+    max-width: 20vw;
+    max-height: 5vw;
+    margin-left: 45%;
+}
 h3{
     text-align: center;
 }
