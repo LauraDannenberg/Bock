@@ -5,9 +5,7 @@
                 <h3>
                     <div class="notSelected"><router-link to="/App/Boards">Hobby</router-link></div>
                     | 
-                    <div class="selected">  Fachbereich
-
-                    </div>
+                    <div class="selected">  Fachbereich </div>
                 </h3>
                 <div class="boards">
                     <div v-for="b in boards" :key="b.id" class="board-item">
@@ -16,18 +14,28 @@
                             <div v-for="m in message" :key="m.id" class="board-item message">
                             
                             <div class="m-details">
-                            <p class="m-name">- {{ m.name }}</p>
-                            <p v-if="m.newMessage" class="new-message">{{ m.text}}</p>
+                                <p class="m-name">- {{ m.name }}</p>
+                                <p v-if="m.newMessage" class="new-message">{{ m.text}}</p>
+                            </div>
+                        </div>
+                        <img src="../assets/Pfeil.jpg" @click="toggleBoard(b.id)" id="pfeil">
+                            <div v-if="b.expanded"> 
+                                <div class="nachrichten">
+                                    <div v-for="m in moreMessages" :key="m.id" class="board-item message">
                             
+                                        <div class="m-details">
+                                            <p class="m-name">- {{ m.name }}</p>
+                                            <p v-if="m.newMessage" class="new-message">{{ m.text}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-        </div>
-    </div>    
+    </div>   
 </template>
 
 <script>
@@ -41,19 +49,35 @@ export default {
     data() {
         return {
             message: [
-                { id: 1, name: 'Pauline Musterfrau', newMessage: true, text: 'Was ist eigentlich der Plural von Campus?' },
-                { id: 2, name: 'Max Musterman', newMessage: true, text: 'Freue mich schon auf die nächste Vorlesung!' }
+                { id: 0, name: 'Pauline Musterfrau', newMessage: true, text: 'Was ist eigentlich der Plural von Campus?' },
+                { id: 1, name: 'Max Musterman', newMessage: true, text: 'Freue mich schon auf die nächste Vorlesung!' }
             ],
             boards: [
-                { id: 1, name: 'Informatik'},
-                { id: 2, name: 'Nachhaltige Entwicklung'}
+                { id: 0, name: 'Informatik'},
+                { id: 1, name: 'Nachhaltige Entwicklung'}
+            ],
+            moreMessages: [
+                { id: 0, name: 'Chris Musterperson', newMessage: true, text: 'Brauch ich bestimmtes Equiment?'},
+                { id: 1, name: 'Dieter Bohlen', newMessage: true, text: 'Kennt ihr schon CoinMaster?'}
             ]
         };
+    },
+
+    methods: {
+        toggleBoard(index) {
+            this.boards[index].expanded = !this.boards[index].expanded;
+        },
     },
 };
 </script>
 
 <style>
+#pfeil{
+    max-width: 15vw;
+    max-height: 2vw;
+    margin-left: 45%;
+    margin-top: 3%;
+}
 h3{
     text-align: center;
 }

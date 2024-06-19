@@ -21,12 +21,21 @@
                         </div>
                     </div>
                     <img src="../assets/Pfeil.jpg" @click="toggleBoard(b.id)" id="pfeil">
-                            <div v-if="b.expanded"> Weitere Posts</div>
+                            <div v-if="b.expanded"> 
+                                <div class="nachrichten">
+                                    <div v-for="m in moreMessages" :key="m.id" class="board-item message">
+                            
+                                        <div class="m-details">
+                                            <p class="m-name">- {{ m.name }}</p>
+                                            <p v-if="m.newMessage" class="new-message">{{ m.text}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-
         </div>
     </div>    
 </template>
@@ -48,7 +57,11 @@ export default {
             boards: [
                 { id: 0, name: 'Yoga'},
                 { id: 1, name: 'Kickboxen'}
-            ]
+            ],
+            moreMessages: [
+                { id: 0, name: 'Chris Musterperson', newMessage: true, text: 'Brauch ich bestimmtes Equiment?'},
+                { id: 1, name: 'Dieter Bohlen', newMessage: true, text: 'Kennt ihr schon CoinMaster?'}
+            ] 
         };
     },
     
@@ -63,9 +76,10 @@ export default {
 
 <style>
 #pfeil{
-    max-width: 20vw;
-    max-height: 5vw;
+    max-width: 15vw;
+    max-height: 2vw;
     margin-left: 45%;
+    margin-top: 3%;
 }
 h3{
     text-align: center;
@@ -80,14 +94,12 @@ h3{
         height: max-content;
         width: 70vw;
         overflow-y: auto;
-           
     }
     .nachrichten{
         padding: 20px;
         background-color: #ffffff;
         height: max-content;
         overflow-y: auto;
-        
     }
     .board-item{
         display: flexbox;
