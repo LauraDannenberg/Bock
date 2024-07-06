@@ -3,7 +3,7 @@ const router = express.Router();
 const Board = require('../models/board.model');
 
 // Erstellen eines Boards
-router.post('/', async (req, res) => { 
+router.post('/create', async (req, res) => { 
   const board = new Board(req.body);
   try {
     const savedBoard = await board.save();
@@ -13,9 +13,13 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
+router.get('/search', async (req, res) => {  // Hier kann man dynamisch die Parameter einbeziehen, wenn sie gesetzt wurden
+  query={}
+  if (req.query.name) {
+    query.vorname = req.query.vorname;
+  }
   try {
-    const board = await Board.find();
+    const board = await Board.find(query);
     res.json(board);
   } catch (err) {
     res.status(500).json({ message: err.message });
