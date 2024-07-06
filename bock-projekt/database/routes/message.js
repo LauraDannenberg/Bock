@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const Profil = require('../models/profil.model');
+const Message = require('../models/message.model');
 
-// Erstellen eines Profils
+// Erstellen eines Messages
 router.post('/', async (req, res) => { 
-  const profil = new Profil(req.body);
+  const message = new Message(req.body);
   try {
-    const savedProfil = await profil.save();
-    res.json(savedProfil);
+    const savedMessage = await message.save();
+    res.json(savedMessage);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -15,48 +15,48 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const profile = await Profil.find();
-    res.json(profile);
+    const messagee = await Message.find();
+    res.json(messagee);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
 
 
-// Profil nach ID abrufen
+// Message nach ID abrufen
 router.get('/:id', async (req, res) => {
   try {
-    const profil = await Profil.findById(req.params.id);
-    if (profil == null) {
-      return res.status(404).json({ message: 'Profil nicht gefunden' });
+    const message = await Message.findById(req.params.id);
+    if (message == null) {
+      return res.status(404).json({ message: 'Message nicht gefunden' });
     }
-    res.json(profil);
+    res.json(message);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
 
-// Profil nach ID aktualisieren
+// Message nach ID aktualisieren
 router.patch('/:id', async (req, res) => {
   try {
-    const profil = await Profil.findByIdAndUpdate(req.params.id, req.body, { new: true }); // wo gibt man die Parameter an die geupdatet werden sollen? Z.B Hobby
-    if (profil == null) {
-      return res.status(404).json({ message: 'Profil nicht gefunden' });
+    const message = await Message.findByIdAndUpdate(req.params.id, req.body, { new: true }); // wo gibt man die Parameter an die geupdatet werden sollen? Z.B Hobby
+    if (message == null) {
+      return res.status(404).json({ message: 'Message nicht gefunden' });
     }
-    res.json(profil);
+    res.json(message);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 });
 
-// Profil nach ID löschen
+// Message nach ID löschen
 router.delete('/:id', async (req, res) => {
   try {
-    const profil = await Profil.findByIdAndDelete(req.params.id);
-    if (profil == null) {
-      return res.status(404).json({ message: 'Profil nicht gefunden' });
+    const message = await Message.findByIdAndDelete(req.params.id);
+    if (message == null) {
+      return res.status(404).json({ message: 'Message nicht gefunden' });
     }
-    res.json({ message: 'Profil gelöscht' });
+    res.json({ message: 'Message gelöscht' });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const Profil = require('../models/profil.model');
+const Board = require('../models/board.model');
 
-// Erstellen eines Profils
+// Erstellen eines Boards
 router.post('/', async (req, res) => { 
-  const profil = new Profil(req.body);
+  const board = new Board(req.body);
   try {
-    const savedProfil = await profil.save();
-    res.json(savedProfil);
+    const savedBoard = await board.save();
+    res.json(savedBoard);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -15,8 +15,8 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const profile = await Profil.find();
-    res.json(profile);
+    const board = await Board.find();
+    res.json(board);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -26,11 +26,11 @@ router.get('/', async (req, res) => {
 // Profil nach ID abrufen
 router.get('/:id', async (req, res) => {
   try {
-    const profil = await Profil.findById(req.params.id);
-    if (profil == null) {
-      return res.status(404).json({ message: 'Profil nicht gefunden' });
+    const board = await Board.findById(req.params.id);
+    if (board == null) {
+      return res.status(404).json({ message: 'Board nicht gefunden' });
     }
-    res.json(profil);
+    res.json(board);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -39,11 +39,11 @@ router.get('/:id', async (req, res) => {
 // Profil nach ID aktualisieren
 router.patch('/:id', async (req, res) => {
   try {
-    const profil = await Profil.findByIdAndUpdate(req.params.id, req.body, { new: true }); // wo gibt man die Parameter an die geupdatet werden sollen? Z.B Hobby
-    if (profil == null) {
-      return res.status(404).json({ message: 'Profil nicht gefunden' });
+    const board = await Board.findByIdAndUpdate(req.params.id, req.body, { new: true }); // wo gibt man die Parameter an die geupdatet werden sollen? Z.B Hobby
+    if (board == null) {
+      return res.status(404).json({ message: 'Board nicht gefunden' });
     }
-    res.json(profil);
+    res.json(board);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -52,11 +52,11 @@ router.patch('/:id', async (req, res) => {
 // Profil nach ID löschen
 router.delete('/:id', async (req, res) => {
   try {
-    const profil = await Profil.findByIdAndDelete(req.params.id);
-    if (profil == null) {
-      return res.status(404).json({ message: 'Profil nicht gefunden' });
+    const board = await Board.findByIdAndDelete(req.params.id);
+    if (board == null) {
+      return res.status(404).json({ message: 'Board nicht gefunden' });
     }
-    res.json({ message: 'Profil gelöscht' });
+    res.json({ message: 'Board gelöscht' });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

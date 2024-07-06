@@ -25,4 +25,25 @@ app.listen(PORT, () => {
 
 // Profil: CRUD wird in routes/profil definiert
 const profilRouter = require('./routes/profil');
-app.use('/api/profil', profilRouter);
+app.use('/pro/', profilRouter);
+
+const boardRouter = require('./routes/board');
+app.use('/board', boardRouter);
+
+const chatRouter = require('./routes/chat');
+app.use('/chat', chatRouter);
+
+const hobbyRouter = require('./routes/hobby');
+app.use('/hobby', hobbyRouter);
+
+const fachbereichRouter = require('./routes/fachbereich');
+app.use('/fachbereich', fachbereichRouter);
+
+const messageRouter = require('./routes/message');
+app.use('/message', messageRouter);
+
+
+// @Lance, hier kommen dann noch deine Routen rein von dem Discovern. Bspi.:
+
+//const discoverRouter = require('./routes/discover');
+//app.use('/disc/discover', discoverRouter);

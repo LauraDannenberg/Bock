@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const Profil = require('../models/profil.model');
+const Chat = require('../models/chat.model');
 
-// Erstellen eines Profils
+// Erstellen eines chats
 router.post('/', async (req, res) => { 
-  const profil = new Profil(req.body);
+  const chat = new Chat(req.body);
   try {
-    const savedProfil = await profil.save();
-    res.json(savedProfil);
+    const savedChat = await chat.save();
+    res.json(savedChat);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -15,8 +15,8 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const profile = await Profil.find();
-    res.json(profile);
+    const chat = await Chat.find();
+    res.json(chat);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -26,37 +26,37 @@ router.get('/', async (req, res) => {
 // Profil nach ID abrufen
 router.get('/:id', async (req, res) => {
   try {
-    const profil = await Profil.findById(req.params.id);
-    if (profil == null) {
-      return res.status(404).json({ message: 'Profil nicht gefunden' });
+    const chat = await Chat.findById(req.params.id);
+    if (chat == null) {
+      return res.status(404).json({ message: 'chat nicht gefunden' });
     }
-    res.json(profil);
+    res.json(chat);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
 
-// Profil nach ID aktualisieren
+// chat nach ID aktualisieren
 router.patch('/:id', async (req, res) => {
   try {
-    const profil = await Profil.findByIdAndUpdate(req.params.id, req.body, { new: true }); // wo gibt man die Parameter an die geupdatet werden sollen? Z.B Hobby
-    if (profil == null) {
-      return res.status(404).json({ message: 'Profil nicht gefunden' });
+    const chat = await Chat.findByIdAndUpdate(req.params.id, req.body, { new: true }); // wo gibt man die Parameter an die geupdatet werden sollen? Z.B Hobby
+    if (chat == null) {
+      return res.status(404).json({ message: 'Chat nicht gefunden' });
     }
-    res.json(profil);
+    res.json(chat);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 });
 
-// Profil nach ID löschen
+// chat nach ID löschen
 router.delete('/:id', async (req, res) => {
   try {
-    const profil = await Profil.findByIdAndDelete(req.params.id);
-    if (profil == null) {
-      return res.status(404).json({ message: 'Profil nicht gefunden' });
+    const chat = await Chat.findByIdAndDelete(req.params.id);
+    if (chat == null) {
+      return res.status(404).json({ message: 'Chat nicht gefunden' });
     }
-    res.json({ message: 'Profil gelöscht' });
+    res.json({ message: 'Chat gelöscht' });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
