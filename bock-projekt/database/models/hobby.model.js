@@ -6,7 +6,8 @@ const Schema = mongoose.Schema;
 // Define collection and schema for Post
 let hobby = new Schema({
   name: {
-    type: String
+    type: String,
+    required: true
   },
   kategorie: {
     type: [String]

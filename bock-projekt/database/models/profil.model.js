@@ -1,4 +1,4 @@
-// post.model.js
+// profil.model.js
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
@@ -6,7 +6,8 @@ const Schema = mongoose.Schema;
 // Define collection and schema for Post
 let profil = new Schema({
   vorname: {
-    type: String
+    type: String,
+    required: true
   },
   nachname: {
     type: String
@@ -15,11 +16,13 @@ let profil = new Schema({
     type: Number
   },
   fachbereich: {
-    type: mongoose.Schema.Types.ObjectId, ref:'fachbereich'
+    type: String,
+    required: true 
   },
-  hobbys: {
-    type: [hobbys]
-  },
+   hobbys: {
+    type: [String],
+    
+   },
   beschreibung: {
     type: String
   }

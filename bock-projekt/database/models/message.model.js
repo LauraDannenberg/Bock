@@ -6,13 +6,16 @@ const Schema = mongoose.Schema;
 // Define collection and schema for Post
 let message = new Schema({
   author: {
-    type: mongoose.Schema.Types.ObjectId, ref:'profil'
+    type: String,
+    required: true
   },
   text: {
-    type: String
+    type: String,
+    required: true
   },
   chat: {
-    type: mongoose.Schema.Types.ObjectId, ref:'chat'
+    type: String,
+    required: true
   }
 },{
     collection: 'message'

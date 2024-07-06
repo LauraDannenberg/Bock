@@ -6,7 +6,8 @@ const Schema = mongoose.Schema;
 // Define collection and schema for Post
 let fachbereich = new Schema({
   name: {
-    type: String
+    type: String,
+    required: true
   },
 },{
     collection: 'fachbereich'

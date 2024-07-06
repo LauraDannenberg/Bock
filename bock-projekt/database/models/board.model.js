@@ -6,7 +6,8 @@ const Schema = mongoose.Schema;
 // Define collection and schema for Post
 let board = new Schema({
   title: {
-    name: String
+    name: String,
+    required: true
   },
   
 },{

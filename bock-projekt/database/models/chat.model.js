@@ -7,10 +7,11 @@ const Schema = mongoose.Schema;
 // Define collection and schema for Post
 let chat = new Schema({
   authoren: {
-    type: [String]
+    type: [String],
+    required: true
   },
   board: {
-    type: mongoose.Schema.Types.ObjectId, ref:'board'
+    type: String
   }
 },{
     collection: 'Chat'
