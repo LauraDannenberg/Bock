@@ -39,7 +39,6 @@
   .logo {
     max-height: 20vh;
     max-width: 27vw;
-    aspect-ratio: 1/1;
     margin: 0;
     margin-top: 2vh;
     
