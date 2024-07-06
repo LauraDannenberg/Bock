@@ -1,6 +1,5 @@
 // chat.model.js
 
-const { String } = require('core-js/shim');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
