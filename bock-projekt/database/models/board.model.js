@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 let board = new Schema({
   title: {
     name: String,
-    required: Boolean
+    required: true
   },
   
 },{
