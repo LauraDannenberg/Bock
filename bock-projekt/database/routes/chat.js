@@ -13,9 +13,10 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
+// Übersicht aller Chats, übergibt eigene id für Authoren. ERSTMAL STRING NACHNAME
+router.get('/overview/:nachname', async (req, res) => {
   try {
-    const chat = await Chat.find();
+    const chat = await Chat.find({"author":req.params.nachname});
     res.json(chat);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -23,7 +24,7 @@ router.get('/', async (req, res) => {
 });
 
 
-// Profil nach ID abrufen
+// Chat nach ID abrufen
 router.get('/:id', async (req, res) => {
   try {
     const chat = await Chat.findById(req.params.id);
@@ -36,18 +37,18 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// chat nach ID aktualisieren
-router.patch('/:id', async (req, res) => {
-  try {
-    const chat = await Chat.findByIdAndUpdate(req.params.id, req.body, { new: true }); // wo gibt man die Parameter an die geupdatet werden sollen? Z.B Hobby
-    if (chat == null) {
-      return res.status(404).json({ message: 'Chat nicht gefunden' });
-    }
-    res.json(chat);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
-});
+// // chat nach ID aktualisieren
+// router.patch('/:id', async (req, res) => {
+//   try {
+//     const chat = await Chat.findByIdAndUpdate(req.params.id, req.body, { new: true }); // wo gibt man die Parameter an die geupdatet werden sollen? Z.B Hobby
+//     if (chat == null) {
+//       return res.status(404).json({ message: 'Chat nicht gefunden' });
+//     }
+//     res.json(chat);
+//   } catch (err) {
+//     res.status(400).json({ message: err.message });
+//   }
+// });
 
 // chat nach ID löschen
 router.delete('/:id', async (req, res) => {

@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Hobby = require('../models/hobby.model');
 
-// Erstellen eines Profils
-router.post('/', async (req, res) => { 
+// Erstellen eines Hobbys
+router.post('/create', async (req, res) => { 
   const hobby = new Hobby(req.body);
   try {
     const savedHobby = await hobby.save();
@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
+router.get('/getAll', async (req, res) => {
   try {
     const hobby = await Hobby.find();
     res.json(hobby);
@@ -37,7 +37,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Hobby nach ID aktualisieren
-router.patch('/:id', async (req, res) => {
+router.patch('/edit/:id', async (req, res) => {
   try {
     const hobby = await Hobby.findByIdAndUpdate(req.params.id, req.body, { new: true }); // wo gibt man die Parameter an die geupdatet werden sollen? Z.B Hobby
     if (hobby == null) {
@@ -50,7 +50,7 @@ router.patch('/:id', async (req, res) => {
 });
 
 // Hobby nach ID löschen
-router.delete('/:id', async (req, res) => {
+router.delete('/delete/:id', async (req, res) => {
   try {
     const hobby = await Hobby.findByIdAndDelete(req.params.id);
     if (hobby == null) {

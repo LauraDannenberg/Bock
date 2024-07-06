@@ -1,62 +1,62 @@
 const express = require('express');
 const router = express.Router();
-const Profil = require('../models/profil.model');
+const Fachbereich = require('../models/fachbereich.model');
 
-// Erstellen eines Profils
-router.post('/', async (req, res) => { 
-  const profil = new Profil(req.body);
+// Erstellen eines Fachbereichs
+router.post('/create', async (req, res) => { 
+  const fachbereich = new Fachbereich(req.body);
   try {
-    const savedProfil = await profil.save();
-    res.json(savedProfil);
+    const savedFachbereich = await fachbereich.save();
+    res.json(savedFachbereich);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 });
 
-router.get('/', async (req, res) => {
+router.get('/getAll', async (req, res) => {
   try {
-    const profile = await Profil.find();
-    res.json(profile);
+    const fachbereiche = await Fachbereich.find();
+    res.json(fachbereiche);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
 
 
-// Profil nach ID abrufen
+// Fachbereich nach ID abrufen
 router.get('/:id', async (req, res) => {
   try {
-    const profil = await Profil.findById(req.params.id);
-    if (profil == null) {
-      return res.status(404).json({ message: 'Profil nicht gefunden' });
+    const fachbereich = await Fachbereich.findById(req.params.id);
+    if (fachbereich == null) {
+      return res.status(404).json({ message: 'Fachbereich nicht gefunden' });
     }
-    res.json(profil);
+    res.json(fachbereich);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
 
-// Profil nach ID aktualisieren
-router.patch('/:id', async (req, res) => {
+// Fachbereich nach ID aktualisieren
+router.patch('/edit/:id', async (req, res) => {
   try {
-    const profil = await Profil.findByIdAndUpdate(req.params.id, req.body, { new: true }); // wo gibt man die Parameter an die geupdatet werden sollen? Z.B Hobby
-    if (profil == null) {
-      return res.status(404).json({ message: 'Profil nicht gefunden' });
+    const fachbereich = await Fachbereich.findByIdAndUpdate(req.params.id, req.body, { new: true }); // wo gibt man die Parameter an die geupdatet werden sollen? Z.B Hobby
+    if (fachbereich == null) {
+      return res.status(404).json({ message: 'Fachbereich nicht gefunden' });
     }
-    res.json(profil);
+    res.json(fachbereich);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 });
 
-// Profil nach ID löschen
-router.delete('/:id', async (req, res) => {
+// Fachbereich nach ID löschen
+router.delete('/delete/:id', async (req, res) => {
   try {
-    const profil = await Profil.findByIdAndDelete(req.params.id);
-    if (profil == null) {
-      return res.status(404).json({ message: 'Profil nicht gefunden' });
+    const fachbereich = await Fachbereich.findByIdAndDelete(req.params.id);
+    if (fachbereich == null) {
+      return res.status(404).json({ message: 'Fachbereich nicht gefunden' });
     }
-    res.json({ message: 'Profil gelöscht' });
+    res.json({ message: 'Fachbereich gelöscht' });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

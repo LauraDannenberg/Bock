@@ -3,7 +3,7 @@ const router = express.Router();
 const Message = require('../models/message.model');
 
 // Erstellen eines Messages
-router.post('/', async (req, res) => { 
+router.post('/create', async (req, res) => { 
   const message = new Message(req.body);
   try {
     const savedMessage = await message.save();
@@ -13,9 +13,10 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
+
+router.get('/byAuthor/:author', async (req, res) => {
   try {
-    const messagee = await Message.find();
+    const messagee = await Message.find({"author":req.params.author});
     res.json(messagee);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -37,17 +38,17 @@ router.get('/:id', async (req, res) => {
 });
 
 // Message nach ID aktualisieren
-router.patch('/:id', async (req, res) => {
-  try {
-    const message = await Message.findByIdAndUpdate(req.params.id, req.body, { new: true }); // wo gibt man die Parameter an die geupdatet werden sollen? Z.B Hobby
-    if (message == null) {
-      return res.status(404).json({ message: 'Message nicht gefunden' });
-    }
-    res.json(message);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
-});
+// router.patch('/:id', async (req, res) => {
+//   try {
+//     const message = await Message.findByIdAndUpdate(req.params.id, req.body, { new: true }); // wo gibt man die Parameter an die geupdatet werden sollen? Z.B Hobby
+//     if (message == null) {
+//       return res.status(404).json({ message: 'Message nicht gefunden' });
+//     }
+//     res.json(message);
+//   } catch (err) {
+//     res.status(400).json({ message: err.message });
+//   }
+// });
 
 // Message nach ID löschen
 router.delete('/:id', async (req, res) => {

@@ -57,9 +57,9 @@ router.get('/:id', async (req, res) => {
 });
 
 // Profil nach ID aktualisieren
-router.patch('/editprofile/:id', async (req, res) => {
+router.patch('/edit/:id', async (req, res) => {
   try {
-    const profil = await Profil.findByIdAndUpdate(req.params.id, req.body, { new: true }); // wo gibt man die Parameter an die geupdatet werden sollen? Z.B Hobby
+    const profil = await Profil.findByIdAndUpdate(req.params.id, req.body, { new: true }); 
     if (profil == null) {
       return res.status(404).json({ message: 'Profil nicht gefunden' });
     }
