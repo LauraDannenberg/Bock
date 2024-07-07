@@ -12,47 +12,37 @@ profile = [];
 eigenesProfil = await Profil.findById(suchendId);
 //json(eigenesProfil).hobbys
 ownCompList = eigenesProfil.hobbys;
-ownCompList = await getOwnHobbyCompList(ownCompList)
+ownCompList = await getHobbyCompList(ownCompList)
 return ownCompList;
 }
 
-async function getOwnHobbyCompList(hobbyArr){
+async function getHobbyCompList(hobbyArr){
 result = hobbyArr;
-for (let index = 0; index < hobbyArr.length; index++) {
-    const hobby = hobbyArr[index];
-    
-}
-for(hobby in hobbyArr){
-    agg = [
-        {
-          '$match': {
-            'name': hobby
-          }
-        }, {
-          '$unwind': '$kategorie'
-        }, {
-          '$lookup': {
-            'from': 'hobby', 
-            'localField': 'kategorie', 
-            'foreignField': 'name', 
-            'as': 'matching_docs'
-          }
-        }, {
-          '$unwind': '$matching_docs'
-        }, {
-          '$replaceRoot': {
-            'newRoot': '$matching_docs'
-          }
+resultstemp = [];
+for( let hobby of result){
+      query = {};
+      query.name = hobby;
+      kats = await Hobby.find(query)
+      for(kat of kats){
+        for(k of kat.kategorie){
+            resultstemp.push(k);
         }
-      ];
-      cur = await Hobby.aggregate(agg);
-      await cur.forEach(supHobby=>{result= result + supHobby.name});
+        
+      }
       
       
 
 }
 
-return result;
+resultstemp = [... new Set(resultstemp)];
+if(resultstemp.length>0){resultstemp = resultstemp.concat(await getHobbyCompList(resultstemp));}
+
+result = result.concat(resultstemp);
+result = [... new Set(result)];
+
+    return result;
+
+
 }
 
 router.get('/', async (req, res) => {  // Hier kann man dynamisch die Parameter einbeziehen, wenn sie gesetzt wurden

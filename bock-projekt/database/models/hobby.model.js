@@ -13,7 +13,7 @@ let hobby = new Schema({
     type: [String]
   }
 },{
-    collection: 'hobbys'
+    collection: 'hobby'
 });
 
-module.exports = mongoose.model('hobbys', hobby);
+module.exports = mongoose.model('hobby', hobby);
