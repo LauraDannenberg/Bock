@@ -1,0 +1,6 @@
+{
+    "0": 4,
+    "1": "{\"id\":1,\"uname\":\"test\",\"email\":\"test@test.io\",\"pwhash\":\"$2b$10$bFiXfM7qjWj8RODCXHiXYeoufzLJxgRpLdo/15LlAQ424fuSgVROu\",\"roles\":[],\"org\":\"hsbo\",\"created\":\"2024-07-06T12:15:38.353Z\",\"lastAccess\":\"2024-07-06T12:15:38.353Z\"}",
+    "2": "{\"id\":2,\"uname\":\"test\",\"email\":\"wdasd@test.io\",\"pwhash\":\"$2b$10$HsV8huhnVJqSFsZ7xAq5Ze3l0g5NiUAL0NNlbiL/ztm7dk21WCb1C\",\"roles\":[],\"org\":\"hsbo\",\"created\":\"2024-07-06T21:50:51.085Z\",\"lastAccess\":\"2024-07-06T21:50:51.085Z\"}",
+    "3": "{\"id\":3,\"uname\":\"felix\",\"email\":\"felix@email.de\",\"pwhash\":\"$2b$10$CbB0QQf4gBT47Py1hXNnFe2bQ/ff9mO0x3D.cUC7iLGCcjRgrdf7O\",\"roles\":[],\"org\":\"hsbo\",\"created\":\"2024-07-07T05:16:34.121Z\",\"lastAccess\":\"2024-07-07T05:16:34.121Z\"}"
+}
