@@ -13,7 +13,8 @@ eigenesProfil = await Profil.findById(suchendId);
 //json(eigenesProfil).hobbys
 ownCompList = eigenesProfil.hobbys;
 ownCompList = await getHobbyCompList(ownCompList)
-return ownCompList;
+ergebnis = await findBuddies(ownCompList,suchendId);
+return ergebnis;
 }
 
 async function getHobbyCompList(hobbyArr){
@@ -34,7 +35,7 @@ for( let hobby of result){
 
 }
 
-resultstemp = [... new Set(resultstemp)];
+resultstemp = [... new Set(resultstemp)]; // Dieses weirde Zeug entfernt automatisch duplikate weil sets duplikate nicht erlauben
 if(resultstemp.length>0){resultstemp = resultstemp.concat(await getHobbyCompList(resultstemp));}
 
 result = result.concat(resultstemp);
@@ -45,10 +46,25 @@ result = [... new Set(result)];
 
 }
 
-router.get('/', async (req, res) => {  // Hier kann man dynamisch die Parameter einbeziehen, wenn sie gesetzt wurden
+
+async function findBuddies(ownArr, suchenderId){
+otherUsers = await Profil.find({_id: {$ne: suchenderId}});
+return otherUsers;
+}
+
+
+
+
+
+
+
+
+
+
+router.get('/:suchenderId', async (req, res) => {  // Hier kann man dynamisch die Parameter einbeziehen, wenn sie gesetzt wurden
     query={}
-    if (req.query.suchenderId) {
-      query.id = req.query.suchenderId;
+    if (req.params.suchenderId) {
+      query.id = req.params.suchenderId;
     }
     try {
       const ergebnis = await getKumpels(query.id);
