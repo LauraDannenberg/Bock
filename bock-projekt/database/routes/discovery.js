@@ -3,6 +3,8 @@ const router = express.Router();
 const Hobby = require('../models/hobby.model');
 const Profil = require('../models/profil.model');
 const { json } = require('express');
+const DiscoveryStats = require('../models/discoveryStats.model');
+
 
 
 async function getKumpels(suchendId){
@@ -73,10 +75,53 @@ function compareHobbys(arr1, arr2){
 
 
 
+router.get('/refreshStats',async (req,res)=>{
+    try{
+        if(await DiscoveryStats.countDocuments({}) >= 0){
+            discoveryStats = await DiscoveryStats.find({});
+
+            profiles = await Profil.find({});
+            scores = [];
+            comparisons = 0;
+            highestScores = [];
+            for(profil1 of profiles){
+                tempScores = [];
+                for(profil2 of profiles){
+                    if(profil1!=profil2){
+                        compP1 = await getHobbyCompList(profil1.hobbys);
+                        compP2 = await getHobbyCompList(profil2.hobbys);
+                        scores.push(compareHobbys(compP1,compP2));
+                        comparisons +=1;
+                        tempScores.push(compareHobbys(compP1,compP2));
+                    }
+                }
+                highestScores.push(Math.max(...tempScores));
+            }
+            sum = 0;
+            hscoresum=0;
+            for(score of scores){
+                sum += score;
+            }
+            for(score of highestScores){
+                hscoresum+= score;
+            }
+            stats = {};
+            stats.averageScore = sum / comparisons;
+            stats.averageHighestScore = hscoresum/highestScores.length;
+            await DiscoveryStats.deleteMany();
+            await DiscoveryStats.create(stats);
+            
+            res.json([stats]);
+        }
+        //res.json("Tja");
+        
+    }catch (err){
+        res.status(500).json({ message: err.message });
+    }
+});
 
 
-
-router.get('/:suchenderId', async (req, res) => {  // Hier kann man dynamisch die Parameter einbeziehen, wenn sie gesetzt wurden
+router.get('/discoverFor/:suchenderId', async (req, res) => {  // Hier kann man dynamisch die Parameter einbeziehen, wenn sie gesetzt wurden
     query={}
     if (req.params.suchenderId) {
       query.id = req.params.suchenderId;

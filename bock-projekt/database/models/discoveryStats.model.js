@@ -5,10 +5,10 @@ const Schema = mongoose.Schema;
 // Define collection and schema for Post
 let discoveryStats = new Schema({
   averageScore: {
-    type: Double
+    type: Number
 },
   averageHighestScore: { 
-    type: Double
+    type: Number
 }
    
 }, {collection: "discoveryStats"});
