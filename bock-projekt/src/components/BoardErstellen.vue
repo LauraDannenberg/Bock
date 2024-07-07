@@ -8,7 +8,7 @@
                 </div>
             </form>
             <router-link to="/App/Boards">
-                <button type="submit" class="save-button">
+                <button type="submit" class="save-button" @click="handleSubmit">
                     Speichern
                 </button>
             </router-link> 
@@ -20,9 +20,25 @@
 <script>
 
 export default {
+    data() {
+        return {
+            hobby: '',
+            textAbout: ''
+        };
+    },
     props:{
         fb:{type:String, default:"Hobby:"},
         textAbout2:{type:String, default:"Was möchtest du den anderen mitteilen?" },
+    },
+    methods: {
+        handleSubmit(){
+            //console.log("lol");
+            const data = {
+                hobby : this.hobby,
+                textAbout : this.textAbout
+            };
+            console.log('Eingegebene Daten:', JSON.stringify(data));
+        }
     }
 };
 </script>
