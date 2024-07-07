@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 let hobby = new Schema({
   name: {
     type: String,
-    required: true
+    required: Boolean
   },
   kategorie: {
     type: [String]

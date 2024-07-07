@@ -45,5 +45,5 @@ app.use('/message', messageRouter);
 
 // @Lance, hier kommen dann noch deine Routen rein von dem Discovern. Bspi.:
 
-//const discoverRouter = require('./routes/discover');
-//app.use('/disc/discover', discoverRouter);
+const discoverRouter = require('./routes/discovery');
+app.use('/disc', discoverRouter);
