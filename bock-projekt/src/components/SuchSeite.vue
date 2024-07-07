@@ -10,7 +10,7 @@ export default {
 
   }),
   mounted () {
-    axios.get("http://localhost:3600/disc/discoverFor/66686848815077cac13ca60e")
+    axios.get("http://localhost:3000/disc/discoverFor/66686848815077cac13ca60e")
     .then(response => {
         this.nutzer = [];
         for(var inhalt of response.data){
