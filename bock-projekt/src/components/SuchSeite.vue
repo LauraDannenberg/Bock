@@ -17,6 +17,12 @@ export default {
             this.nutzer.push(inhalt[0]);
         }
     }).catch(reason => {
+        this.nutzer.push({vornamen: "Der",
+            nachname: "Weihnachtsmann",
+            fachbereich: "Nordpol",
+            beschreibung: "Ho Ho Ho",
+            alter: "Zwölfundsechzig"
+        });
         console.log(reason);
     });
   }
