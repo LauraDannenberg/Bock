@@ -21,8 +21,8 @@
 
 export default {
     props:{
-        fb:{type:String, default:"Erzähle uns etwas über dich! " },
-        textAbout2:{type:String, default:"Erzähle uns etwas über dich! " },
+        fb:{type:String, default:"Fachbereich: " },
+        textAbout2:{type:String, default:"Was möchtest du den anderen mitteilen?" },
     }
 };
 
