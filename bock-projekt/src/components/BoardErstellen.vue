@@ -4,7 +4,7 @@
             <form>
                 <div class="form-group">
                     <input type="text" id="fachbereich" v-model="hobby" :placeholder="fb" required />
-                    <textarea id="about" cols="30" rows="4" v-model="textAbout" :placeholder='placeholder' required ></textarea>
+                    <textarea id="about" cols="30" rows="4" v-model="textAbout" :placeholder='textAbout2' required ></textarea>
                 </div>
             </form>
             <router-link to="/App/Boards">
@@ -20,10 +20,10 @@
 <script>
 
 export default {
-  data:() => ({
-    textAbout:"Beschreib was du gemacht hast!",
-    hobby:"Hobby:",
-  })
+    props:{
+        fb:{type:String, default:"Erzähle uns etwas über dich! " },
+        textAbout2:{type:String, default:"Erzähle uns etwas über dich! " },
+    }
 };
 </script>
 
