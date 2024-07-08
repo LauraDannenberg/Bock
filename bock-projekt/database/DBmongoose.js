@@ -22,7 +22,12 @@ app.listen(PORT, () => {
   console.log(`Server läuft auf Port ${PORT}`);
 });
 
-
+app.options('/', function (req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader('Access-Control-Allow-Methods', '*');
+  res.setHeader("Access-Control-Allow-Headers", "*");
+  res.end();
+});
 // Profil: CRUD wird in routes/profil definiert
 const profilRouter = require('./routes/profil');
 app.use('/pro/', profilRouter);

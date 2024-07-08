@@ -65,9 +65,9 @@ export default {
             }
             try {
                 console.log("Sending registration request...");
-                const response = await axios.post('http://localhost:3600/user/create', {
-                    username: this.username,
-                    password: this.password,
+                const response = await axios.post('http://localhost:3000/user/create', {
+                    uname: this.username,
+                    pwhash: this.password,
                     email: this.email
                 });
                 console.log("Response received");
