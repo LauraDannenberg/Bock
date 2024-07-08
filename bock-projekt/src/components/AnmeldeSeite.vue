@@ -5,7 +5,7 @@
         <Linie />
 
         <div id="unten">
-            <form @submit.prevent="register">
+            <form @submit.prevent="login">
                 <div class="form-group">
                     <label for="username">Nutzername</label>
                     <input type="text" id="username" v-model="username" placeholder="Nutzername eingeben" required />
@@ -20,30 +20,60 @@
                         Hier registrieren
                     </router-link>
                 </div>
-            <router-link to="/App/Profile/create">
-                <button type="submit" class="register-button">
+                <button @click="login" type="submit" class="register-button">
                      Anmelden
                 </button>
+            
+            <!-- methode "register" aufrufen, statt weiterleitung 
+            <router-link to="/App/Profile/create">
             </router-link> 
+            -->
             </form>
+            <p v-if="error">{{ error }}</p>
         </div>
-        
     </div>
-    
-    
-    
 </template>
 
 <script>
 import Header from './HeaderComponent.vue';
 import Linie from './LineComponent.vue';
+import { useRouter } from 'vue-router'; // Import useRouter from vue-router
 
 export default {
   name: 'ChatSeite',
   components: {
     Header,
     Linie
-  }
+  },
+  data() {
+        return {
+            username: '',
+            password: '',
+            error: null,
+        };
+    },
+    methods: {
+        async login() {
+            console.log("I'm going in.");
+            try {
+                const response = await this.$store.dispatch('login', { username: this.username, password: this.password });
+                if (response.success) {
+                    this.$router.push({ name: 'Profil' });
+                } else {
+                    this.error = response.message;
+                }
+            } catch (error) {
+                this.error = error; //'Login failed. Please try again.';
+            }
+        },
+    },
+    setup() {
+        const router = useRouter();
+        const redirectToHome = () => {
+            router.push('/');
+        };
+        return { redirectToHome }
+    }
 };
 </script>
 

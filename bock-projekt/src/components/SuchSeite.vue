@@ -20,7 +20,7 @@ export default {
 
 
 
-    axios.get("http://localhost:3600/disc/discoverFor/66686848815077cac13ca60e")
+    axios.get("http://localhost:3600/disc/discoverFor/668c37394919480dd263d957")
     .then(response => {
         this.nutzer = [];
         for(var inhalt of response.data){

@@ -22,30 +22,59 @@
                     <label for="email">Email</label>
                     <input type="email" id="email" v-model="email" placeholder="Email eingeben" required />
                 </div>
-            <router-link to="/App/Profile/create">
                 <button type="submit" class="register-button">
                      Registrieren
                 </button>
-            </router-link> 
+            <!-- methode "register" aufrufen, statt weiterleitung
+            <router-link to="/App/Profile/create">
+                
+            </router-link> -->  
             </form>
+            <p v-if="error">{{ error }}</p>
         </div>
-        
     </div>
-    
-    
-    
 </template>
 
 <script>
 import Header from './HeaderComponent.vue';
 import Linie from './LineComponent.vue';
+//import { useRouter } from 'vue-router'; // Import useRouter from vue-router
 
 export default {
   name: 'ChatSeite',
   components: {
     Header,
     Linie
-  }
+  },
+  data() {
+        return {
+            username: '',
+            password: '',
+            email: '',
+            error: null,
+        };
+    },
+    methods: {
+        async register() {
+            try {
+                //store = store;
+                console.log("djsjdsjdasjdoia");
+                // die line ist immer das problem
+                // eslint-disable-next-line
+                const response = await this.$store.dispatch('register', { username: this.username, password: this.password, email: this.email });
+                console.log("oijdwoiajsoidj");
+                if (response.success) {
+                    console.log("welse")
+                    this.$router.push({ name: 'ProfileErstellen' });
+                } else {
+                    console.log("else")
+                    this.error = response.message;
+                }
+            } catch (error) {
+                this.error = error; //'Login failed. Please try again.';
+            }
+        },
+    }
 };
 </script>
 
