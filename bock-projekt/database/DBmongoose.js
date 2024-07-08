@@ -2,12 +2,17 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
+const cors = require('cors');
+
+
+
 const app = express();
 
 // Middleware
 app.use(bodyParser.json());
+app.use(cors());
 
-// MongoDB-Verbindung
+// MongoDB-Verbindung 27017
 mongoose.connect('mongodb://localhost:27017/bock', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB verbunden'))
   .catch(err => console.log(err));
@@ -47,9 +52,6 @@ app.use('/post', postRouter);
 
 const userRouter = require('./routes/user');
 app.use('/user', userRouter);
-
-
-// @Lance, hier kommen dann noch deine Routen rein von dem Discovern. Bspi.:
 
 const discoverRouter = require('./routes/discovery');
 app.use('/disc', discoverRouter);
