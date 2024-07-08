@@ -1,5 +1,12 @@
 <template>
     <div class="Boards">
+        <div class=" rechts">
+            <router-link to="/App/Boards/Fachbereich/FachbereichCreate">
+              <button type="submit" >
+                <img :width="35" :src="require('../assets/Stift.png')">
+              </button>
+            </router-link>
+        </div>
         <div id="mitte">
             <div class="board-group">
                 <h3>
@@ -165,5 +172,13 @@ h3{
         display: flex;
         flex-direction: row;
         justify-content: center;
+    }
+    button{
+        margin: 15px 15px 0 0;
+        background-color: white;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 10px 10px 0px 0px #b370b3, -8px -8px 15px 1px rgba(0,0,0,0);
+        cursor: pointer;
     }
 </style>

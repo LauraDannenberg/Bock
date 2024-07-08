@@ -1,21 +1,31 @@
 <script>
+import axios from 'axios';
+
 
 
 export default {
   name: 'SuchSeite',
   data:()=>({
-    nutzer: [
-    {id: 2, name: "Max Mustermann", alter: "21", fachbereich: 'Informatik und Elektrotechnik',hobbies:["Yoga","Karate","Gitarre"],beschreibung: "Hey ich spiele übrigens Gitarre (aber nur Wonderwall)"},    
-    {id: 2, name: "Pauline Musterfrau", alter: "20", fachbereich: 'Informatik und Elektrotechnik',hobbies:["Webdevelopment","Kickboxen","Häkeln"],beschreibung: "Wenn ich Webseiten baue brauchen die unnedingt ganz viel Klickibunti"},
-    {id: 2, name: "Chris Musterperson", alter: "20", fachbereich: 'Architektur',hobbies:["Lego","Minecraft","Züge"],beschreibung: "Ich mag Züge."},
-    {id: 2, name: "Dieter Bohlen", alter: "100+", fachbereich: '"Musik"',hobbies:["Coinmaster"],beschreibung: "Von Bohlen empfohlen."},
-    
-        
-        
-        
-    ]
+    nutzer:  []
 
-  })
+  }),
+  mounted () {
+    axios.get("http://localhost:3000/disc/discoverFor/66686848815077cac13ca60e")
+    .then(response => {
+        this.nutzer = [];
+        for(var inhalt of response.data){
+            this.nutzer.push(inhalt[0]);
+        }
+    }).catch(reason => {
+        this.nutzer.push({vornamen: "Der",
+            nachname: "Weihnachtsmann",
+            fachbereich: "Nordpol",
+            beschreibung: "Ho Ho Ho",
+            alter: "Zwölfundsechzig"
+        });
+        console.log(reason);
+    });
+  }
 };
 </script>
 <template>
@@ -23,7 +33,7 @@ export default {
     
     <div class="container" v-for="n in nutzer" :key="n.id">
         <div class="topOverview">
-        <h2>{{ n.name }}</h2>
+        <h2>{{n.vornamen + " " + n.nachname}}</h2>
         <div>Alter: {{n.alter}} </div>
         <div>Fachbereich: {{n.fachbereich}}</div>
         </div>

@@ -14,7 +14,7 @@ let chat = new Schema({
     type: String
   }
 },{
-    collection: 'Chat'
+    collection: 'chat'
 });
 
 module.exports = mongoose.model('chat', chat);

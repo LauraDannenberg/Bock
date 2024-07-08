@@ -42,8 +42,11 @@ app.use('/fachbereich', fachbereichRouter);
 const messageRouter = require('./routes/message');
 app.use('/message', messageRouter);
 
+const postRouter = require('./routes/post');
+app.use('/post', postRouter);
+
 
 // @Lance, hier kommen dann noch deine Routen rein von dem Discovern. Bspi.:
 
-//const discoverRouter = require('./routes/discover');
-//app.use('/disc/discover', discoverRouter);
+const discoverRouter = require('./routes/discovery');
+app.use('/disc', discoverRouter);

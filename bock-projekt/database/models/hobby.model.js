@@ -7,13 +7,13 @@ const Schema = mongoose.Schema;
 let hobby = new Schema({
   name: {
     type: String,
-    required: true
+    required: Boolean
   },
   kategorie: {
     type: [String]
   }
 },{
-    collection: 'hobbys'
+    collection: 'hobby'
 });
 
-module.exports = mongoose.model('hobbys', hobby);
+module.exports = mongoose.model('hobby', hobby);

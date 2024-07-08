@@ -14,6 +14,8 @@ import ChatDetail from './components/ChatDetail.vue'
 import BoardFachbereich from './components/BoardFachbereich.vue'
 import AnmeldeSeite from './components/AnmeldeSeite.vue'
 import RegistrationsSeite from './components/RegistrationsSeite.vue';
+import BoardErstellen from './components/BoardErstellen.vue';
+import FbErstellen from './components/FbErstellen.vue';
 
 const routes = [
     {
@@ -73,7 +75,16 @@ const routes = [
                 name: 'Boards - Fachbereich',
                 component: BoardFachbereich
             },
-            
+            {
+                path: 'Boards/Fachbereich/FachbereichCreate',
+                name: 'Create Fachbereich',
+                component: FbErstellen
+            },
+            {
+                path: 'Boards/Boardcreate',
+                name: 'Create Hobby',
+                component: BoardErstellen
+            },
             {
                 path: 'Chats',
                 name: 'Chats',
