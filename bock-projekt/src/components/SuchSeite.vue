@@ -6,14 +6,25 @@ import axios from 'axios';
 export default {
   name: 'SuchSeite',
   data:()=>({
-    nutzer:  []
+    nutzer:  [],
+    avgScore : 0,
+    avgHScore: 0
 
   }),
   mounted () {
-    axios.get("http://localhost:3000/disc/discoverFor/66686848815077cac13ca60e")
+    axios.get("http://localhost:3600/disc/refreshStats")
+    .then(response =>{
+        this.avgScore = response.data.averageScore;
+        this.avgHScore = response.data.averageHighestScore;
+    })
+
+
+
+    axios.get("http://localhost:3600/disc/discoverFor/66686848815077cac13ca60e")
     .then(response => {
         this.nutzer = [];
         for(var inhalt of response.data){
+            inhalt[0].score = inhalt[1];
             this.nutzer.push(inhalt[0]);
         }
     }).catch(reason => {
@@ -25,6 +36,10 @@ export default {
         });
         console.log(reason);
     });
+  },methods: 
+  async function getRating(){
+
+    
   }
 };
 </script>
@@ -39,7 +54,7 @@ export default {
         </div>
         <hobbyDiv>
             <ul>
-                <li v-for="h in n.hobbies" :key="h">{{h}}</li>
+                <li v-for="h in n.hobbys" :key="h">{{h}}</li>
             </ul>
         </hobbyDiv>
         <div class="Beschreibung">
@@ -52,6 +67,7 @@ export default {
               <img :src="require('../assets/Yoga.png')" alt="Yoga"/>
               
             </div>
+            <div id="rating"> {{  }} </div>
             <button class="button">Anschreiben</button>
         </div>
     </div>
@@ -92,6 +108,7 @@ export default {
     overflow-y: hidden;
     overflow-x: hidden;
     font-size: calc((1vw+1vh));
+    font-family: Arial, Helvetica, sans-serif;
 }
 .nutzerIcons{
     display: flex;
