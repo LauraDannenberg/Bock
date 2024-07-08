@@ -53,7 +53,6 @@ async function findBuddies(ownArr, suchenderId){
 otherUsers = await Profil.find({_id: {$ne: suchenderId}});
 resArr = [];
 for(user of otherUsers){
-    console.log(compareHobbys(ownArr,await getHobbyCompList(user.hobbys)));
     score = compareHobbys(ownArr,await getHobbyCompList(user.hobbys));
     resArr.push([user,score]);
 }
