@@ -45,6 +45,9 @@ app.use('/message', messageRouter);
 const postRouter = require('./routes/post');
 app.use('/post', postRouter);
 
+const userRouter = require('./routes/user');
+app.use('/user', userRouter);
+
 
 // @Lance, hier kommen dann noch deine Routen rein von dem Discovern. Bspi.:
 

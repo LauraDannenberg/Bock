@@ -38,6 +38,9 @@
 <script>
 import Header from './HeaderComponent.vue';
 import Linie from './LineComponent.vue';
+import axios from 'axios';
+import { useRouter } from 'vue-router';
+
 //import { useRouter } from 'vue-router'; // Import useRouter from vue-router
 
 export default {
@@ -56,26 +59,33 @@ export default {
     },
     methods: {
         async register() {
+            if (this.password !== this.confirmPassword) {
+                this.error = 'Kennwörter stimmen nicht überein.';
+                return;
+            }
             try {
-                //store = store;
-                console.log("djsjdsjdasjdoia");
-                // die line ist immer das problem
-                // eslint-disable-next-line
-                const response = await this.$store.dispatch('register', { username: this.username, password: this.password, email: this.email });
-                console.log("oijdwoiajsoidj");
-                if (response.success) {
-                    console.log("welse")
+                console.log("Sending registration request...");
+                const response = await axios.post('http://localhost:3600/user/create', {
+                    username: this.username,
+                    password: this.password,
+                    email: this.email
+                });
+                console.log("Response received");
+                if (response.data.success) {
                     this.$router.push({ name: 'ProfileErstellen' });
                 } else {
-                    console.log("else")
-                    this.error = response.message;
+                    this.error = response.data.message;
                 }
             } catch (error) {
-                this.error = error; //'Login failed. Please try again.';
+                this.error = 'Registrierung fehlgeschlagen. Bitte versuchen Sie es erneut.';
             }
-        },
-    }
-};
+            },
+  },
+        setup() {
+            const router = useRouter();
+            return { router };
+        }
+}
 </script>
 
 <style scoped>

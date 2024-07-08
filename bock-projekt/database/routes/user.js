@@ -1,0 +1,69 @@
+const express = require('express');
+const router = express.Router();
+const User = require('../models/user.model');
+
+// Erstellen eines Users
+router.post('/create', async (req, res) => { 
+  const user = new User(req.body);
+  try {
+    const savedUser = await user.save();
+    res.json(savedUser);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+router.get('/search', async (req, res) => {  // Hier kann man dynamisch die Parameter einbeziehen, wenn sie gesetzt wurden
+  query={}
+  if (req.query.name) {
+    query.vorname = req.query.vorname;
+  }
+  try {
+    const user = await User.find(query);
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+
+// Profil nach ID abrufen
+router.get('/:id', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (user == null) {
+      return res.status(404).json({ message: 'User nicht gefunden' });
+    }
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Profil nach ID aktualisieren
+router.patch('/:id', async (req, res) => {
+  try {
+    const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true }); // wo gibt man die Parameter an die geupdatet werden sollen? Z.B Hobby
+    if (user == null) {
+      return res.status(404).json({ message: 'User nicht gefunden' });
+    }
+    res.json(user);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+// Profil nach ID löschen
+router.delete('/:id', async (req, res) => {
+  try {
+    const user = await User.findByIdAndDelete(req.params.id);
+    if (user == null) {
+      return res.status(404).json({ message: 'User nicht gefunden' });
+    }
+    res.json({ message: 'User gelöscht' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+module.exports = router;
