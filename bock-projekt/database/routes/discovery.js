@@ -76,7 +76,7 @@ function compareHobbys(arr1, arr2){
 
 router.get('/refreshStats',async (req,res)=>{
     try{
-        if(await DiscoveryStats.countDocuments({}) >= 0){
+        
             discoveryStats = await DiscoveryStats.find({});
 
             profiles = await Profil.find({});
@@ -111,7 +111,7 @@ router.get('/refreshStats',async (req,res)=>{
             await DiscoveryStats.create(stats);
             
             res.json([stats]);
-        }
+        
         //res.json("Tja");
         
     }catch (err){
