@@ -2,6 +2,15 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user.model');
 
+
+
+
+router.options('/create', function (req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader('Access-Control-Allow-Methods', '*');
+  res.setHeader("Access-Control-Allow-Headers", "*");
+  res.end();
+});
 // Erstellen eines Users
 router.post('/create', async (req, res) => { 
   const user = new User(req.body);
