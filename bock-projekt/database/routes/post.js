@@ -14,9 +14,18 @@ router.post('/create', async (req, res) => {
 });
 
 
-router.get('/byAuthor/:author', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const poste = await Post.find({"author":req.params.author});
+    res.json(poste);
+  } catch (err) {
+    res.status(500).json({ poste: err.post });
+  }
+});
+
+router.get('/all', async (req, res) => {
+  try {
+    const poste = await Post.find({});
     res.json(poste);
   } catch (err) {
     res.status(500).json({ poste: err.post });
@@ -33,7 +42,7 @@ router.get('/byBoard/:board', async (req, res) => {
 });
 
 
-// Post nach ID abrufen
+/* Post nach ID abrufen
 router.get('/:id', async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -44,7 +53,7 @@ router.get('/:id', async (req, res) => {
   } catch (err) {
     res.status(500).json({ post: err.post });
   }
-});
+});*/
 
 // Post nach ID aktualisieren
 // router.patch('/:id', async (req, res) => {

@@ -28,7 +28,15 @@
         alter: {type: String, default: "Alter.." },
         fb: {type: String ,default:"Fachbereich..." },
         hobby: {type: String, default: "Hobby..." },
-  }
+  },
+  methods: {
+    emitChange() {
+      this.$emit('update:firstname', this.firstname);
+      this.$emit('update:age', this.age);
+      this.$emit('update:fachbereich', this.fachbereich);
+      this.$emit('update:hobby', this.hobby);
+    },
+  },
 }
 
 

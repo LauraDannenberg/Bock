@@ -1,9 +1,8 @@
 <template>
-    <router-link to="/Profile">
     <button type="submit" class="save-button">
         Speichern
     </button>
-</router-link> 
+
 </template>
 <script>
     export default{

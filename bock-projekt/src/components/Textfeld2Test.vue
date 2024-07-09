@@ -10,7 +10,12 @@
     name:"TextFeld2Test",
     props:{
         placeholder:{type:String, default:"Erzähle uns etwas über dich! " },
-    }
+    },
+    methods: {
+    emitChange() {
+      this.$emit('update:beschreibung', this.beschreibung);
+    },
+  },
 }
 </script>
 <style>

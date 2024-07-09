@@ -1,7 +1,7 @@
 <template>
     <div class="Boards">
         <div class=" rechts">
-            <router-link to="/App/Boards/Fachbereich/FachbereichCreate">
+            <router-link to="/App/Boards/Boardcreate">
               <button type="submit" >
                 <img :width="35" :src="require('../assets/Stift.png')">
               </button>
@@ -12,20 +12,24 @@
                 <h3>
                     <div class="notSelected"><router-link to="/App/Boards">Hobby</router-link></div>
                     | 
-                    <div class="selected">  Fachbereich </div>
+                    <div class="selected">  
+                    Fachbereich
+                    </div>
                 </h3>
                 <div class="boards">
                     <div v-for="b in boards" :key="b.id" class="board-item">
                         <h2 class="board-name">{{ b.name }}</h2>
                         <div class="nachrichten">
-                            <div v-for="m in message" :key="m.id" class="board-item message">
-                            
+                            <div v-for="m in filteredMessages(b.name)" :key="m.id" class="board-item message">
+                            <div class="testi">
                             <div class="m-details">
-                                <p class="m-name">- {{ m.name }}</p>
-                                <p v-if="m.newMessage" class="new-message">{{ m.text}}</p>
+                            <p class="m-name">- {{ m.name }}</p>
                             </div>
+                            
+                            <p v-if="m.newMessage" class="new-message">{{ m.text}}</p>
                         </div>
-                        <img src="../assets/Pfeil.jpg" @click="toggleBoard(b.id)" id="pfeil">
+                    </div><!--
+                    <img src="../assets/Pfeil.jpg" @click="toggleBoard(b.id)" id="pfeil">
                             <div v-if="b.expanded"> 
                                 <div class="nachrichten">
                                     <div v-for="m in moreMessages" :key="m.id" class="board-item message">
@@ -36,17 +40,17 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>   
+    </div>    
 </template>
 
 <script>
-
+import axios from 'axios';
 
 export default {
 
@@ -55,26 +59,57 @@ export default {
     name: 'SchwarzeBretter',
     data() {
         return {
-            message: [
-                { id: 0, name: 'Pauline Musterfrau', newMessage: true, text: 'Was ist eigentlich der Plural von Campus?' },
-                { id: 1, name: 'Max Musterman', newMessage: true, text: 'Freue mich schon auf die nächste Vorlesung!' }
-            ],
+            message: [],
             boards: [
                 { id: 0, name: 'Informatik'},
-                { id: 1, name: 'Nachhaltige Entwicklung'}
+                { id: 1, name: 'Elektrotechnik'}
             ],
             moreMessages: [
                 { id: 0, name: 'Chris Musterperson', newMessage: true, text: 'Brauch ich bestimmtes Equiment?'},
                 { id: 1, name: 'Dieter Bohlen', newMessage: true, text: 'Kennt ihr schon CoinMaster?'}
-            ]
+            ] ,
         };
     },
-
+    created() {
+    this.fetchData();
+    },
+    watch: {
+        '$route.params.id': 'fetchData'
+    },
+    
     methods: {
         toggleBoard(index) {
             this.boards[index].expanded = !this.boards[index].expanded;
         },
+        async fetchData() {
+      
+            try {
+                
+                const response = await axios.get('http://localhost:3000/post/all');
+                console.log("Data fetched successfully:", response.data);
+                const data = response.data;
+                data.forEach(post => {
+                    this.author = post.author;
+                    this.text = post.text;
+                    this.board = post.board;
+                    this.message.push({ name: this.author, newMessage: true, text: this.text, board : this.board});
+                });
+
+               
+                // Debug-Ausgabe zur Überprüfung der Datenzuweisung
+                console.log("Vorname in Komponente:", this.author);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                if (error.response) {
+                console.log("Error response data:", error.response.data);
+                }
+            }
+            },
+        filteredMessages(boardName) {
+            return this.message.filter(msg => msg.board === boardName);
+        }
     },
+
 };
 </script>
 
