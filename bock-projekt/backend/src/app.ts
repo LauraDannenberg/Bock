@@ -1,14 +1,14 @@
 // basics
-import path from 'path';
+//import path from 'path';
 
 // express
-import express, { Request, Response, NextFunction } from 'express';
+import express from 'express';
 import session from 'express-session'
-import { createClient } from 'redis';
+//import { createClient } from 'redis';
 
 // authentication
 import { configurePassport } from './conf/passport';
-import { isAdmin, isAuthenticated } from './mw/auth';
+import { isAuthenticated } from './mw/auth';
 import passport from 'passport';
 
 // routes
@@ -19,7 +19,7 @@ import test from './routes/test';
 
 // middleware
 import { logRequest } from './mw/logger';
-import { frontendProxy, dataProxy, fileProxy } from './mw/proxy'
+import { frontendProxy, fileProxy, chatProxy} from './mw/proxy'
 
 // express
 const app = express();
@@ -31,6 +31,8 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+
+app.use('/chat', logRequest, chatProxy);
 
 
 app.use(express.json());
@@ -57,7 +59,6 @@ app.use('/stor', logRequest, fileProxy);
 /**
  * Weiterleitung für das Frontend
  */
-app.use('/dat', logRequest, dataProxy);
 
 
 

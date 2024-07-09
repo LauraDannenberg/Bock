@@ -1,12 +1,19 @@
-<script>
-export default{
-    props: {
-        id: String
-    }
-}
-</script>
 <template>
     <div>
-        Chat mit {{ id }}
+      Chat mit {{ id }}
     </div>
-</template>
+  </template>
+  
+  <script>
+  export default {
+    name: 'ChatVerlauf',
+    props: {
+      id: String
+    }
+  };
+  </script>
+  
+  <style scoped>
+  /* Your CSS styles here */
+  </style>
+  

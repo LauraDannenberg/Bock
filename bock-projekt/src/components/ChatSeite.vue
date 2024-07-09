@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <div class="chat-list">
@@ -16,23 +15,41 @@
 </template>
 
 <script>
-
-
 export default {
   name: 'ChatSeite',
   data() {
     return {
       chats: [
-        { id: 1, name: 'Pauline Musterfrau', newMessage: true, profilbild: 'Yoga.png'},
-        { id: 2, name: 'Max Musterman', newMessage: false, profilbild: 'Stift.png'},
-        { id: 3, name: 'Chris Musterperson', newMessage: false, profilbild: 'Stift.png'},
-        { id: 4, name: 'Dieter Bohlen', newMessage: false, profilbild: 'Yoga.png'}
+        {
+          id: 1,
+          name: 'Chat 1',
+          profilbild: 'Lupe.png',
+          newMessage: false//true
+        },
+        {
+          id: 2,
+          name: 'Chat 2',
+          profilbild: 'Lupe.png',
+          newMessage: false
+        },
+        {
+          id: 3,
+          name: 'Chat 3',
+          profilbild: 'Lupe.png',
+          newMessage: false//true
+        },
+        {
+          id: 4,
+          name: 'Chat 4',
+          profilbild: 'Lupe.png',
+          newMessage: false
+        }
       ]
     };
   },
   methods: {
-    goToChatDetail(id){
-      this.$router.push({ name: 'Pauline Musterfrau', params: { id }});
+    goToChatDetail(id) {
+      this.$router.push({ name: 'ChatDetail', params: { id } });
     }
   }
 };
