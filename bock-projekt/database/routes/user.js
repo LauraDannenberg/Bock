@@ -28,10 +28,8 @@ router.post('/create', async (req, res) => {
 });
 
 router.get('/search', async (req, res) => {  // Hier kann man dynamisch die Parameter einbeziehen, wenn sie gesetzt wurden
-  query={}
-  if (req.query.name) {
-    query.vorname = req.query.vorname;
-  }
+  query= req.body;
+
   try {
     const user = await User.find(query);
     res.json(user);

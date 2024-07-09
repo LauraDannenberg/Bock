@@ -33,7 +33,9 @@ router.get('/search', async (req, res) => { // Hier kann man dynamisch die Param
   if (req.query.fachbereich) {
     query.fachbereich = req.query.fachbereich;
   }
-
+  if (req.query.besitzer) {
+    query.besitzer = req.query.besitzer;
+  }
   try {
     const profile = await Profil.find(query);
     res.json(profile);

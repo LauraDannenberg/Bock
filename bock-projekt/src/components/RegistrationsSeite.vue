@@ -77,7 +77,6 @@ export default {
                     this.error = response.data.message;
                 }
             } catch (error) {
-                
                 this.$router.push({ name: 'ProfileErstellen' });
             }
             },
