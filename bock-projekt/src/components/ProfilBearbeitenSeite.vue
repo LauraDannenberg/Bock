@@ -1,14 +1,16 @@
 <template>
     <div class="Profilerstellen">
-        <div id="content">
-          <TextFeld :name="vorname" :alter="alter" :fb="fachbereich" :hobby="hobby"/>
-          <TextFeld2Test :placeholder="beschreibung"/> 
-          <button type="submit" class="save-button" @click="handleSubmit">
+      <div id="content">   
+          <div class="Textfelder" >        
+            <TextFeld class="Textfeld" @update:firstname="updateFirstname" @update:age="updateAge" @update:fachbereich="updateFachbereich" @update:hobby="updateHobby"/>
+            <TextFeld2Test class="Textfeld" @update:about="updateAbout"/>
+          </div>
+          <button type="submit" class="save-button" @click="submitProfile">
             Speichern
-          </button>
-        </div>
+        </button>
  
-    </div>    
+    </div>
+  </div> 
 </template>
 
 <script>
@@ -40,6 +42,7 @@ export default {
     '$route.params.id': 'fetchData'
   },
   methods: {
+    
     async handleSubmit(){
             console.log("lol");
             const data = {
@@ -51,7 +54,7 @@ export default {
             };
             console.log('Eingegebene Daten:', JSON.stringify(data));
             try {
-                const response = await axios.patch('http://localhost:3000/pro/edit/668c37394919480dd263d957', data);
+                const response = await axios.patch(`http://localhost:3000/pro/edit/${this.$store.getters.getProfile}`, data);
                 console.log('Daten erfolgreich gesendet:', response.data);
                 // Hier könntest du weitere Aktionen nach dem erfolgreichen Absenden der Daten durchführen
                 if (response.data) {

@@ -28,7 +28,7 @@ export default {
             this.nutzer.push(inhalt[0]);
         }
     }).catch(reason => {
-        this.nutzer.push({vornamen: "Der",
+        this.nutzer.push({vorname: "Der",
             nachname: "Weihnachtsmann",
             fachbereich: "Nordpol",
             beschreibung: "Ho Ho Ho",
@@ -63,7 +63,7 @@ export default {
     
     <div class="container" v-for="n in nutzer" :key="n.id">
         <div class="topOverview">
-        <h2>{{n.vornamen + " " + n.nachname}}</h2>
+        <h2>{{n.vorname}}</h2>
         <div>Alter: {{n.alter}} </div>
         <div>Fachbereich: {{n.fachbereich}}</div>
         </div>

@@ -55,6 +55,7 @@ export default {
       this.about = value;
     },
     async submitProfile() {
+      if(this.firstname!==''){
       console.log("test")
       const data = {
         vorname: this.firstname,
@@ -66,6 +67,7 @@ export default {
       };
       console.log('Eingegebene Daten:', JSON.stringify(data));
       try {
+                
                 const response = await axios.post('http://localhost:3000/pro/makeprofile', data);
                 console.log('Daten erfolgreich gesendet:', response.data)
                 const {_id} = response.data
@@ -84,6 +86,7 @@ export default {
                 }
                 // Hier könntest du eine Fehlermeldung anzeigen oder entsprechend reagieren
             }
+          }
     },
   },
 }

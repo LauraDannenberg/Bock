@@ -24,7 +24,7 @@
         </ul>
       </div>
       <div class="container">
-        Hei! <br />{{ beschreibung }}
+       {{ beschreibung }}
       </div>
     </div>
   </div>
@@ -57,11 +57,13 @@ export default {
   methods: {
     async fetchData() {
       console.log("ProfileID:",this.profileId);
+
       try {
-        const response = await axios.get(`http://localhost:3000/pro/${this.profileId}`);
+        const response = await axios.get(`http://localhost:3000/pro/${this.$store.getters.getProfile}`);
         console.log("Data fetched successfully:", response.data);
+        
         const data = response.data;
-        this.vorname = data.vornamen;
+        this.vorname = data.vorname;
         this.nachname = data.nachname;
         this.alter = data.alter;
         this.fachbereich = data.fachbereich;
