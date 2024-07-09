@@ -43,9 +43,12 @@ export default {
       fachbereich: null,
       hobby: null,
       beschreibung: null,
+      profileId: this.$route.params.id,
+
     };
   },
   created() {
+    this.profileId = this.$route.params.id; // Setze die profileId aus den Routenparametern
     this.fetchData();
   },
   watch: {
@@ -53,9 +56,9 @@ export default {
   },
   methods: {
     async fetchData() {
-      
+      console.log("ProfileID:",this.profileId);
       try {
-        const response = await axios.get(`http://localhost:3000/pro/668c37394919480dd263d957`);
+        const response = await axios.get(`http://localhost:3000/pro/${this.profileId}`);
         console.log("Data fetched successfully:", response.data);
         const data = response.data;
         this.vorname = data.vornamen;

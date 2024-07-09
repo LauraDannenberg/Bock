@@ -112,7 +112,8 @@ const routes = [
                     {
                         path: 'view',
                         name: 'Profil',
-                        component: ProfilSeite
+                        component: ProfilSeite,
+                        props: true
                     },
                     {
                         path: 'create',

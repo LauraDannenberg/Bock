@@ -1,7 +1,7 @@
 <template>
     <form>
             <div class="form-group">
-                <textarea id="about" cols="30" rows="4" v-model="about" :placeholder='placeholder' required ></textarea>
+                <textarea id="about" cols="30" rows="4" v-model="about" :placeholder='placeholder' required @input="emitChange"></textarea>
             </div>
     </form>
 </template>
@@ -13,8 +13,17 @@
     },
     methods: {
     emitChange() {
-      this.$emit('update:beschreibung', this.beschreibung);
+      this.$emit('update:about', this.about);
     },
+    
+  },
+  data() {
+    return {
+      about : "",
+    };
+  },
+  watch: {
+    about: 'emitChange',
   },
 }
 </script>

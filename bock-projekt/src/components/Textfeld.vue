@@ -1,18 +1,18 @@
 <template>
     <div class="textfeld">
-    <form>
+    <form @submit.prevent="emitChange">
             <div class="form-group">
-                <input type="text" id="firstname" v-model="firstname" :placeholder="name" required class="Firstname" />
+                <input type="text" id="firstname" v-model="firstname" :placeholder="name" required class="Firstname" @input="emitChange" />
                 </div>
                 <ul>
                 <div class="form-group">
-                    <input type="text" id="age" v-model="age" :placeholder="alter" required />
+                    <input type="text" id="age" v-model="age" :placeholder="alter" required @input="emitChange"/>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="fachbereich" v-model="fachbereich" :placeholder="fb" required />
+                    <input type="text" id="fachbereich" v-model="fachbereich" :placeholder="fb" required @input="emitChange"/>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="hobby" v-model="Hobby" :placeholder="hobby" required />
+                    <input type="text" id="hobby" v-model="Hobby" :placeholder="hobby" required @input="emitChange"/>
                 </div>
                 </ul>
     </form>
@@ -29,13 +29,27 @@
         fb: {type: String ,default:"Fachbereich..." },
         hobby: {type: String, default: "Hobby..." },
   },
+  data() {
+    return {
+      firstname: "",
+      age: "",
+      fachbereich: "",
+      Hobby: "",
+    };
+  },
   methods: {
     emitChange() {
       this.$emit('update:firstname', this.firstname);
       this.$emit('update:age', this.age);
       this.$emit('update:fachbereich', this.fachbereich);
-      this.$emit('update:hobby', this.hobby);
+      this.$emit('update:hobby', this.Hobby);
     },
+  },
+  watch: {
+    firstname: 'emitChange',
+    age: 'emitChange',
+    fachbereich: 'emitChange',
+    Hobby: 'emitChange',
   },
 }
 
