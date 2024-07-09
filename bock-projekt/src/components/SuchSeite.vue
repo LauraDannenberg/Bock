@@ -20,7 +20,7 @@ export default {
 
 
 
-    axios.get("http://localhost:3600/disc/discoverFor/66686848815077cac13ca60e")
+    axios.get(`http://localhost:3600/disc/discoverFor/${this.profileId}`) //Richtige Profilid abfrage bitte
     .then(response => {
         this.nutzer = [];
         for(var inhalt of response.data){
