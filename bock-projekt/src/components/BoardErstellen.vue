@@ -57,10 +57,10 @@ export default {
         },
         async fetchData() {
             try {
-                const response = await axios.get(`http://localhost:3000/pro/668c37394919480dd263d957`);
+                const response = await axios.get(`http://localhost:3000/pro/`+this.$store.getters.getProfile);
                 console.log("Data fetched successfully:", response.data);
                 const data = response.data;
-                this.author = data.vornamen;
+                this.author = data.vorname;
                 // Debug-Ausgabe zur Überprüfung der Datenzuweisung
                 console.log("Vorname in Komponente:", this.author);
             } catch (error) {

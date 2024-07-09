@@ -32,11 +32,15 @@ export default {
   methods: {
     // Methode zur Generierung eines zufälligen Benutzernamens
     generateRandomUsername() {
-      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      let username = '';
+      //const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      //let username = this.currentUsername
+      
+      let username = 'user'
+      /*
       for (let i = 0; i < 8; i++) {  // 8 Zeichen lange Benutzernamen
         username += characters.charAt(Math.floor(Math.random() * characters.length));
       }
+        */
       return username;
     },
 
