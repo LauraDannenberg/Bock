@@ -52,6 +52,20 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+router.get('/getProfile', async (req, res) => {
+  query= req.body;
+  try {
+    const user = await User.findOne(query);
+    const profile = await Profile.findOne({besitzer: user._id})
+    if (user == null) {
+      return res.status(404).json({ message: 'User nicht gefunden' });
+    }
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 // Profil nach ID aktualisieren
 router.patch('/:id', async (req, res) => {
   try {
