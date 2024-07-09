@@ -25,6 +25,9 @@ let profil = new Schema({
    },
   beschreibung: {
     type: String
+  },
+  besitzer:{
+    type: String
   }
 },
 {

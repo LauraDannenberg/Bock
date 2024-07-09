@@ -77,7 +77,8 @@ export default {
                     this.error = response.data.message;
                 }
             } catch (error) {
-                this.error = 'Registrierung fehlgeschlagen. Bitte versuchen Sie es erneut.';
+                
+                this.$router.push({ name: 'ProfileErstellen' });
             }
             },
   },
