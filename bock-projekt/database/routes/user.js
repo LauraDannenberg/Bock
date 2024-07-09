@@ -42,7 +42,7 @@ router.get('/search', async (req, res) => {  // Hier kann man dynamisch die Para
 
 
 // Profil nach ID abrufen
-router.get('/:id', async (req, res) => {
+router.get('getById/:id', async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     if (user == null) {
