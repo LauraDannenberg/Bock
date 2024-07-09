@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user.model');
+const Profil =require('../models/profil.model');
+
 
 
 
@@ -15,6 +17,9 @@ router.options('/create', function (req, res) {
 router.post('/create', async (req, res) => { 
   const user = new User(req.body);
   try {
+    
+    const createdProfile = new Profil({vorname:' ',nachname:' ',alter:0,fachbereich:" ",hobbys:[],beschreibung:' ',besitzer: user._id});
+    const savedProfile = await createdProfile.save();
     const savedUser = await user.save();
     res.json(savedUser);
   } catch (err) {
@@ -23,10 +28,8 @@ router.post('/create', async (req, res) => {
 });
 
 router.get('/search', async (req, res) => {  // Hier kann man dynamisch die Parameter einbeziehen, wenn sie gesetzt wurden
-  query={}
-  if (req.query.name) {
-    query.vorname = req.query.vorname;
-  }
+  query= req.body;
+
   try {
     const user = await User.find(query);
     res.json(user);

@@ -4,6 +4,7 @@ import { createStore } from 'vuex';
 const store = createStore({
     state: {
         user: JSON.parse(localStorage.getItem('user')) || null,
+        profile: JSON.parse(localStorage.getItem('profile')) || null,
         loginError: null,
     },
     mutations: {
@@ -13,6 +14,14 @@ const store = createStore({
                 localStorage.setItem('user', JSON.stringify(user));
             } else {
                 localStorage.removeItem('user');
+            }
+        },
+        setProfile(state, profile) {
+            state.profile = profile;
+            if (profile) {
+                localStorage.setItem('profile', JSON.stringify(profile));
+            } else {
+                localStorage.removeItem('profile');
             }
         },
         setLoginError(state, error) {
