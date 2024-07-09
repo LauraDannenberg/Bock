@@ -70,6 +70,7 @@ export default {
                 console.log('Daten erfolgreich gesendet:', response.data)
                 const {_id} = response.data
                 this.profileId = _id;
+                this.$store.commit("setProfile",_id)
                 console.log(this.profileId)
                 this.$router.push('/profile/');
                 
