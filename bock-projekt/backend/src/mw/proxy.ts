@@ -27,3 +27,24 @@ export const fileProxy = createProxyMiddleware({
         '^/stor': '',
     },
 });
+
+export const chatProxy = createProxyMiddleware({
+    target: 'http://localhost:4000',
+    changeOrigin: true,
+    pathRewrite: {
+      '^/chat': '',
+    },
+    ws: true,
+    on: {
+      proxyReq: (proxyReq, req, res) => {
+        console.log('Proxying request to:', proxyReq.path);
+      },
+      proxyRes: (proxyRes, req, res) => {
+        console.log('Received response from target', res.statusCode);
+      },
+      error: (err, req, res) => {
+        console.error('Error in proxy:', err.message);
+      },
+    },
+  });
+  

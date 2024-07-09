@@ -19,7 +19,7 @@ import test from './routes/test';
 
 // middleware
 import { logRequest } from './mw/logger';
-import { frontendProxy, dataProxy, fileProxy } from './mw/proxy'
+import { frontendProxy, dataProxy, fileProxy, chatProxy} from './mw/proxy'
 
 // express
 const app = express();
@@ -31,6 +31,8 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+
+app.use('/chat', logRequest, isAuthenticated,chatProxy);
 
 
 app.use(express.json());

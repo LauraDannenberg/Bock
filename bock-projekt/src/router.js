@@ -10,7 +10,7 @@ import ProfilErstellenSeite from './components/ProfilErstellenSeite.vue'
 import ProfilBearbeitenSeite from './components/ProfilBearbeitenSeite.vue'
 import AppNav from './components/KomponentenRahmen.vue'
 import ProfilTab from './components/ProfilTab.vue';
-import ChatDetail from './components/ChatDetail.vue'
+import ChatDetail from './components/ChatDetail.vue';
 import BoardFachbereich from './components/BoardFachbereich.vue'
 import AnmeldeSeite from './components/AnmeldeSeite.vue'
 import RegistrationsSeite from './components/RegistrationsSeite.vue';
@@ -27,11 +27,6 @@ const routes = [
         path: '/Boards',
         name: 'Boards',
         component: SchwarzeBretter
-    },
-    {
-        path: '/Chat',
-        name: 'Chat',
-        component: ChatSeite
     },
     {
         path: '/LogIn',
@@ -90,14 +85,19 @@ const routes = [
                 name: 'Chats',
                 component: ChatSeite
             },
+            {
+                path: '/Chat',
+                name: 'Chat',
+                component: ChatSeite
+            },
             
             {
                 path: 'Chat/:id',
-                name: 'Pauline Musterfrau',
+                name: 'ChatDetail',
                 component: ChatDetail,
-                props: true
+                props: route => ({ id: route.params.id })
             },
-            
+
             {
                 path: 'Profile',
                 name: 'Profil',
