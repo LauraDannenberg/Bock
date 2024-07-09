@@ -7,20 +7,20 @@ export default {
   name: 'SuchSeite',
   data:()=>({
     nutzer:  [],
-    avgScore : 0,
-    avgHScore: 0
+    avgScore : 0.0,
+    avgHScore: 0.0
 
   }),
-  mounted () {
-    axios.get("http://localhost:3600/disc/refreshStats")
-    .then(response =>{
+  async created () {
+    await axios.get("http://localhost:3600/disc/refreshStats")
+    .then((response) =>{
         this.avgScore = response.data.averageScore;
         this.avgHScore = response.data.averageHighestScore;
     })
 
 
 
-    axios.get("http://localhost:3600/disc/discoverFor/668c37394919480dd263d957")
+    axios.get("http://localhost:3600/disc/discoverFor/66686848815077cac13ca60e")
     .then(response => {
         this.nutzer = [];
         for(var inhalt of response.data){
@@ -36,11 +36,26 @@ export default {
         });
         console.log(reason);
     });
-  },methods: 
-  async function getRating(){
+  },
+  methods: 
+  {
+    ratingWrapper(score){
+       return this.getRating(score);
+    },
+    getRating(scr){
 
-    
+    if(scr>this.avgHScore){return 'S';}
+    else if(scr>this.avgScore){return 'A';}
+    else if(scr > 0){return 'B';}
+    else return 'F';
+  },
+  getColor(rating){
+    if(rating == 'S') return 'yellow';
+    if(rating == 'A') return 'blue';
+    if(rating == 'B') return 'green';
+    if(rating == 'F') return 'red';
   }
+}
 };
 </script>
 <template>
@@ -67,8 +82,9 @@ export default {
               <img :src="require('../assets/Yoga.png')" alt="Yoga"/>
               
             </div>
-            <div id="rating"> {{  }} </div>
+            <div id="rating" :style="{color: getColor(ratingWrapper(n.score))}"> {{ ratingWrapper(n.score) }} </div>
             <button class="button">Anschreiben</button>
+            
         </div>
     </div>
 </div> 
@@ -109,6 +125,14 @@ export default {
     overflow-x: hidden;
     font-size: calc((1vw+1vh));
     font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+}
+#rating{
+    position: absolute;
+    bottom: 3%;
+    right: 10%;
+    font-weight: 600;
+    
 }
 .nutzerIcons{
     display: flex;
