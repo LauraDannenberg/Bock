@@ -2,9 +2,6 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user.model');
 const Profil =require('../models/profil.model');
-const bodyParser = require('body-parser');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 
 
 
@@ -91,38 +88,6 @@ router.delete('/:id', async (req, res) => {
     res.json({ message: 'User gelöscht' });
   } catch (err) {
     res.status(500).json({ message: err.message });
-  }
-});
-
-router.post('/login', async (req, res) => {
-  const { username, password } = req.body;
-
-  const user = await User.findOne({ username });
-  if (!user) {
-    return res.status(400).send('User not found');
-  }
-
-  const isPasswordValid = await bcrypt.compare(password, user.password);
-  if (!isPasswordValid) {
-    return res.status(400).send('Invalid password');
-  }
-
-  const token = jwt.sign({ id: user._id }, 'deinGeheimnis', { expiresIn: '1h' });
-
-  res.json({ token });
-});
-router.post('/register', async (req, res) => {
-  const { username, password } = req.body;
-
-  const hashedPassword = await bcrypt.hash(password, 10);
-
-  const user = new User({ username, password: hashedPassword });
-
-  try {
-    await user.save();
-    res.status(201).send('User registered');
-  } catch (error) {
-    res.status(400).send('Error registering user');
   }
 });
 module.exports = router;
