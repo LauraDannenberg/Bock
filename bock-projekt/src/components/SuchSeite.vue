@@ -83,8 +83,9 @@ export default {
               
             </div>
             <div id="rating" :style="{color: getColor(ratingWrapper(n.score))}"> {{ ratingWrapper(n.score) }} </div>
+            <router-link to="Chat/1">
             <button class="button">Anschreiben</button>
-            
+        </router-link>
         </div>
     </div>
 </div> 

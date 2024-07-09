@@ -49,7 +49,7 @@ export default {
       this.fachbereich = value;
     },
     updateHobby(value) {
-      this.hobby = value;
+      this.hobby = value.split(", ");
     },
     updateAbout(value) {
       this.about = value;

@@ -32,15 +32,14 @@ export default {
   methods: {
     // Methode zur Generierung eines zufälligen Benutzernamens
     generateRandomUsername() {
-      //const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      //let username = this.currentUsername
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let username = "User"
       
-      let username = 'user'
-      /*
-      for (let i = 0; i < 8; i++) {  // 8 Zeichen lange Benutzernamen
+      //let username = 'user'
+      
+      //for (let i = 0; i < 8; i++) {  // 8 Zeichen lange Benutzernamen
         username += characters.charAt(Math.floor(Math.random() * characters.length));
-      }
-        */
+      //}
       return username;
     },
 
@@ -58,11 +57,14 @@ export default {
     },
     receiveMessage(username, message) {
       console.log("received msg", username, message)
-      if (username !== this.currentUsername && message) {  // Filter out messages from the current user
+      console.log("i am", this.currentUsername)
+      if (username !== this.currentUsername && message) {
+        this.chatMessages.push({ text: message, type: 'received', username });
+        /*
         try {
           // Assuming event.data is a string representing a JSON object
-          const parsedData = JSON.parse(event.data);
-          console.log(event.data)
+          const parsedData = JSON.parse(message);
+          console.log("MESSAGETEST",message)
           // Check if parsedData.message is a Buffer-like object
           if (parsedData.message && parsedData.message.type === 'Buffer') {
             const messageBuffer = new Uint8Array(parsedData.message.data);
@@ -73,12 +75,13 @@ export default {
             const username = messageData.username;
             const message = messageData.text;
             console.log(username);
-            console.log(message);
-            this.chatMessages.push({ text: message, type: 'received', username });
+            console.log("da messag",message);
+            this.chatMessages.push({ text: message.text, type: 'received', username });
           }
         } catch (e) {
-          document.getElementById('messages').value += `Error parsing message: ${event.data}\n`;
+          document.getElementById('messages').value += `Error parsing message: ${message}\n`;
         }
+          */
       }
     },
     setupWebSocket() {
@@ -93,8 +96,12 @@ export default {
       this.ws.onmessage = (event) => {
         if (typeof event.data === 'string') {
           try {
+            console.log("eventdatastring",event.data)
             const data = JSON.parse(event.data);
-            this.receiveMessage(data.username, data.message);
+            console.log(data.username)
+            const dames = JSON.parse(data.message).text;
+            console.log(dames);
+            this.receiveMessage(data.username, dames);
           } catch (error) {
             console.error('Error parsing JSON data from WebSocket:', error);
           }
