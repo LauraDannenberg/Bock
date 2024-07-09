@@ -35,6 +35,8 @@ const store = createStore({
                 const response = await axios.post('/auth/login', { username, password });
                 if (response.data) {
                     commit('setUser', response.data);
+                    const profileResponse = await axios.get('/user/getprofile');
+                    commit('setProfile', profileResponse.data);
                     return { success: true };
                 } else {
                     return { success: false, message: 'Invalid login' };
@@ -49,6 +51,8 @@ const store = createStore({
                 const response = await axios.post('/auth/register', { username, password, email });
                 if (response.data) {
                     commit('setUser', response.data);
+                    const profileResponse = await axios.get('/auth/profile');
+                    commit('setProfile', profileResponse.data);
                     return { success: true };
                 } else {
                     return { success: false, message: 'Invalid registration' };
@@ -59,12 +63,14 @@ const store = createStore({
         },
         logout({ commit }) {
             commit('setUser', null);
+            commit('setProfile', null);
             axios.get('/auth/logout');
         },
     },
     getters: {
         isAuthenticated: state => !!state.user,
         getUser: state => state.user,
+        getProfile: state => state.profile,
         getLoginError: state => state.loginError,
     },
 });
