@@ -17,8 +17,8 @@ router.post('/create', async (req, res) => {
   const user = new User(req.body);
   try {
     
-    const createdProfile = new Profil({vorname:' ',nachname:' ',alter:0,fachbereich:" ",hobbys:[],beschreibung:' ',besitzer: user._id});
-    const savedProfile = await createdProfile.save();
+    
+    
     const savedUser = await user.save();
     res.json(savedUser);
   } catch (err) {
